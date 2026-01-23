@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merchani - Soluciones Industriales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Plus+Jakarta+Sans:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --space-indigo: #1A2B4E;
+            --fresh-sky: #00A3E0;
+            --platinum: #F0F2F5;
+            --full-blue: #2E5BFF;
+            --charcoal: #333F48;
+            --cool-steel: #94A3B8;
+            --bright-snow: #F8FAFC;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background-color: var(--bright-snow);
+            color: var(--charcoal);
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: var(--space-indigo);
+            padding: 1rem 5%;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--fresh-sky);
+        }
+
+        /* --- Estructura del Carrusel --- */
+        .hero-carousel {
+            background-color: var(--platinum);
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .carousel-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(26, 43, 78, 0.15);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-overlay {
+            background: rgba(26, 43, 78, 0.7);
+            padding: 2rem;
+            border-radius: 12px;
+            color: white;
+            backdrop-filter: blur(4px);
+        }
+
+        .carousel-dots {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .dot {
+            height: 12px;
+            width: 12px;
+            background-color: var(--cool-steel);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: var(--full-blue);
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        /* --- Grid de Tarjetas (Tiendas) --- */
+        .products-section {
+            padding: 5rem 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--platinum);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .card-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        .badge {
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .public { background: #E0F2FE; color: var(--fresh-sky); }
+        .private { background: #E0E7FF; color: var(--full-blue); }
+
+        .btn {
+            display: block;
+            text-align: center;
+            margin-top: 1.5rem;
+            background-color: var(--full-blue);
+            color: white;
+            padding: 0.8rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover { opacity: 0.9; }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">MERCHANI</div>
+    <nav>Soluciones Industriales</nav>
+</header>
+
+<section class="hero-carousel">
+    <div class="carousel-container">
+        <div class="carousel-track" id="track">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80')">
+                <div class="slide-overlay">
+                    <h2>Innovación en tu mano</h2>
+                    <p>Gestiona tu industria desde cualquier lugar</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80')">
+                <div class="slide-overlay">
+                    <h2>Eficiencia Operativa</h2>
+                    <p>Optimiza tus procesos con tecnología Merchani</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&w=1200&q=80')">
+                <div class="slide-overlay">
+                    <h2>Datos en Tiempo Real</h2>
+                    <p>Decisiones inteligentes basadas en información</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="carousel-dots" id="dots-container">
+        <span class="dot active" onclick="goToSlide(0)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
+        <span class="dot" onclick="goToSlide(2)"></span>
+    </div>
+</section>
+
+<main class="products-section">
+    <div class="card">
+        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&q=60')"></div>
+        <div class="card-content">
+            <span class="badge public">Pública</span>
+            <h3 class="card-title">Esta tienda es Pública</h3>
+            <p>Descubre soluciones estándar listas para implementar en tu empresa.</p>
+            <a href="#" class="btn">Explorar Apps</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=500&q=60')"></div>
+        <div class="card-content">
+            <span class="badge private">Privada</span>
+            <h3 class="card-title">Esta tienda es Privada</h3>
+            <p>Acceso exclusivo a herramientas personalizadas para socios registrados.</p>
+            <a href="#" class="btn" style="background-color: var(--space-indigo);">Acceso Cliente</a>
+        </div>
+    </div>
+</main>
+
+<script>
+    const track = document.getElementById('track');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlide = 0;
+    const totalSlides = 3;
+
+    function updateCarousel() {
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    }
+
+    function goToSlide(index) {
+        currentSlide = index;
+        updateCarousel();
+    }
+
+    // Movimiento automático cada 5 segundos
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+    }, 5000);
+</script>
+
+</body>
+</html>
