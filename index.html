@@ -17,15 +17,8 @@
         }
 
         * { box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; margin: 0; background-color: var(--bright-snow); color: var(--charcoal); }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            background-color: var(--bright-snow);
-            color: var(--charcoal);
-        }
-
-        /* --- HEADER CLARO --- */
         header {
             background-color: var(--bright-snow);
             padding: 0.8rem 5%;
@@ -33,266 +26,139 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            position: sticky; top: 0; z-index: 1000;
         }
 
-        .logo-container img {
-            height: 50px; /* Ajusta según el tamaño de tu logo */
-            display: block;
+        .logo-container img { height: 50px; }
+        nav ul { list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; align-items: center; }
+        nav a { text-decoration: none; color: var(--space-indigo); font-weight: 600; font-size: 0.95rem; }
+
+        /* CARRUSEL */
+        .hero-carousel { width: 100%; overflow: hidden; position: relative; }
+        .carousel-track { display: flex; transition: transform 0.6s ease-in-out; }
+        .slide { min-width: 100%; height: 75vh; display: flex; align-items: center; justify-content: center; background-size: cover; background-position: center; }
+        .slide-overlay { background: rgba(26, 43, 78, 0.6); padding: 2.5rem; border-radius: 15px; color: white; text-align: center; backdrop-filter: blur(4px); }
+
+        /* PRODUCTOS EN UNA LINEA */
+        .catalog-container { padding: 4rem 5%; max-width: 1400px; margin: 0 auto; }
+        .catalog-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); /* Fuerza 4 columnas en la misma línea */
+            gap: 1.5rem; 
+        }
+        .card { 
+            background: white; border-radius: 12px; overflow: hidden; 
+            border: 1px solid var(--platinum); transition: 0.3s; text-align: center;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .card-img { width: 100%; height: 150px; object-fit: cover; }
+        .card-body { padding: 1.5rem; }
+        .card h3 { font-size: 1.1rem; color: var(--space-indigo); margin: 0.5rem 0; }
+        .btn-card { 
+            display: inline-block; background: var(--full-blue); color: white; 
+            padding: 0.6rem 1rem; text-decoration: none; border-radius: 6px; font-size: 0.85rem; 
         }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-            margin: 0;
-            padding: 0;
-            align-items: center;
+        /* SECCIÓN APP MÓVIL (BANNER GRANDE) */
+        .app-section {
+            width: 100%; height: 450px;
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center;
         }
-
-        nav a {
-            text-decoration: none;
-            color: var(--space-indigo);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.3s;
+        .app-box {
+            background: white; padding: 2.5rem; border-radius: 10px; text-align: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2); max-width: 500px;
         }
+        .app-box h2 { color: var(--space-indigo); margin: 0; font-family: 'Plus Jakarta Sans'; }
+        .app-box p { color: var(--charcoal); margin-top: 10px; font-weight: 500; }
 
-        nav a:hover { color: var(--fresh-sky); }
-
-        .login-icon {
-            font-size: 1.2rem;
-            color: var(--full-blue);
-            cursor: pointer;
-        }
-
-        .menu-mobile-btn {
-            display: none;
-            font-size: 1.5rem;
-            color: var(--space-indigo);
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* --- HERO CARRUSEL ANCHO COMPLETO --- */
-        .hero-carousel {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .slide {
-            min-width: 100%;
-            height: 85vh; /* Gran parte de la pantalla */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-
-        .slide-overlay {
-            background: rgba(26, 43, 78, 0.6);
-            padding: 3rem;
-            border-radius: 15px;
-            color: white;
-            text-align: center;
-            max-width: 800px;
-            backdrop-filter: blur(4px);
-        }
-
-        .slide-overlay h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 3rem; margin-bottom: 1rem; }
-        .slide-overlay p { font-size: 1.2rem; opacity: 0.9; }
-
-        .carousel-dots {
-            position: absolute;
-            bottom: 30px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .dot {
-            height: 10px; width: 10px;
-            background-color: rgba(255,255,255,0.5);
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .dot.active { background-color: white; width: 30px; border-radius: 5px; }
-
-        /* --- CATÁLOGO 4 TARJETAS --- */
-        .catalog-container {
-            padding: 5rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .catalog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: white;
-            border-radius: 16px;
-            padding: 2.5rem;
-            text-align: center;
-            border: 1px solid var(--platinum);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-        }
-
-        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 30px rgba(0,0,0,0.08); }
-        
-        .card i { font-size: 2.5rem; color: var(--fresh-sky); margin-bottom: 1.5rem; }
-        .card h3 { color: var(--space-indigo); margin-bottom: 1rem; }
-        .card p { font-size: 0.9rem; line-height: 1.6; color: var(--charcoal); margin-bottom: 1.5rem; }
-
-        .btn-card {
-            display: inline-block;
-            background: var(--full-blue);
-            color: white;
-            padding: 0.7rem 1.5rem;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        /* --- RESPONSIVE MÓVIL --- */
-        @media (max-width: 768px) {
-            nav ul { display: none; } /* Oculta menú normal */
-            .menu-mobile-btn { display: block; } /* Muestra icono hamburguesa */
-            .slide-overlay h2 { font-size: 2rem; }
-        }
+        @media (max-width: 1024px) { .catalog-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .catalog-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
 <header>
     <div class="logo-container">
-        <img src="https://github.com/CristinaDuenas/merchani-web/blob/main/Logo%20Nuevo%20Merchani.png">
+        <img src="TU_URL_DE_LOGO_AQUI" alt="Merchani Logo">
     </div>
-    
     <nav>
-        <ul id="nav-menu">
+        <ul>
             <li><a href="#">Productos</a></li>
-            <li><a href="#">Nuestros clientes</a></li>
+            <li><a href="#">Clientes</a></li>
             <li><a href="#">Precios</a></li>
-            <li><a href="#" title="Login"><i class="fa-solid fa-circle-user login-icon"></i></a></li>
+            <li><i class="fa-solid fa-circle-user" style="color:var(--full-blue); font-size:1.2rem;"></i></li>
         </ul>
-        <button class="menu-mobile-btn"><i class="fa-solid fa-bars"></i></button>
     </nav>
 </header>
 
 <section class="hero-carousel">
     <div class="carousel-track" id="track">
-        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1600&q=80')">
-            <div class="slide-overlay">
-                <h2>Innovación en tu Mano</h2>
-                <p>Gestiona tu empresa desde cualquier lugar</p>
-            </div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1600&q=80')">
+            <div class="slide-overlay"><h2>Innovación en tu Mano</h2><p>Gestiona tu empresa desde cualquier lugar</p></div>
         </div>
-        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&w=1600&q=80')">
-            <div class="slide-overlay">
-                <h2>Información en tiempo real</h2>
-                <p>Decisiones inteligentes basadas en información</p>
-            </div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&w=1600&q=80')">
+            <div class="slide-overlay"><h2>Información en tiempo real</h2><p>Decisiones inteligentes basadas en datos</p></div>
         </div>
-        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80')">
-            <div class="slide-overlay">
-                <h2>Conectividad Total</h2>
-                <p>Tu industria operando en una red global unificada</p>
-            </div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80')">
+            <div class="slide-overlay"><h2>Conectividad Total</h2><p>Tu industria operando en una red unificada</p></div>
         </div>
-        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80')">
-            <div class="slide-overlay">
-                <h2>Análisis de Futuro</h2>
-                <p>Anticípate a los cambios del mercado con IA</p>
-            </div>
-        </div>
-        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80')">
-            <div class="slide-overlay">
-                <h2>Soporte Especializado</h2>
-                <p>Estamos contigo en cada paso de tu transformación digital</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="carousel-dots" id="dots-container">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
     </div>
 </section>
 
 <main class="catalog-container">
-    <h2 style="text-align:center; margin-bottom: 3rem; font-family: 'Plus Jakarta Sans';">Nuestras Soluciones</h2>
     <div class="catalog-grid">
         <div class="card">
-            <i class="fa-solid fa-mobile-screen-button"></i>
-            <h3>Mi tienda móvil</h3>
-            <p>Lleva tu inventario y ventas directamente en tu smartphone con sincronización en la nube.</p>
-            <a href="#" class="btn-card">Conocer más</a>
+            <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=400" class="card-img" alt="Tienda Móvil">
+            <div class="card-body">
+                <h3>Mi tienda móvil</h3>
+                <p>Ventas e inventario en tu mano.</p>
+                <a href="#" class="btn-card">Conocer más</a>
+            </div>
         </div>
         <div class="card">
-            <i class="fa-solid fa-store"></i>
-            <h3>Bazar</h3>
-            <p>Plataforma ágil para la comercialización de productos minoristas con gestión de pagos.</p>
-            <a href="#" class="btn-card">Conocer más</a>
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400" class="card-img" alt="Bazar">
+            <div class="card-body">
+                <h3>Bazar</h3>
+                <p>Plataforma para minoristas.</p>
+                <a href="#" class="btn-card">Conocer más</a>
+            </div>
         </div>
         <div class="card">
-            <i class="fa-solid fa-building-shield"></i>
-            <h3>Corporativo</h3>
-            <p>Sistemas robustos de ERP y gestión de procesos para grandes estructuras organizacionales.</p>
-            <a href="#" class="btn-card">Conocer más</a>
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400" class="card-img" alt="Corporativo">
+            <div class="card-body">
+                <h3>Corporativo</h3>
+                <p>Gestión robusta para empresas.</p>
+                <a href="#" class="btn-card">Conocer más</a>
+            </div>
         </div>
         <div class="card">
-            <i class="fa-solid fa-city"></i>
-            <h3>Plaza Comercial</h3>
-            <p>Solución integral para la administración de múltiples locales y flujos de clientes.</p>
-            <a href="#" class="btn-card">Conocer más</a>
+            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400" class="card-img" alt="Plaza">
+            <div class="card-body">
+                <h3>Plaza Comercial</h3>
+                <p>Administración de locales.</p>
+                <a href="#" class="btn-card">Conocer más</a>
+            </div>
         </div>
     </div>
 </main>
 
+<section class="app-section">
+    <div class="app-box">
+        <h2>Mi Aplicación Móvil</h2>
+        <p>Excelente para empresas que buscan fidelizar clientes</p>
+    </div>
+</section>
+
 <script>
     const track = document.getElementById('track');
-    const dots = document.querySelectorAll('.dot');
-    let currentSlide = 0;
-
-    function updateCarousel() {
-        track.style.transform = `translateX(-${currentSlide * 100}%)`;
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentSlide);
-        });
-    }
-
+    let current = 0;
     setInterval(() => {
-        currentSlide = (currentSlide + 1) % 5;
-        updateCarousel();
+        current = (current + 1) % 3;
+        track.style.transform = `translateX(-${current * 100}%)`;
     }, 5000);
-
-    // Funcionalidad básica para el botón móvil (alerta demostrativa)
-    document.querySelector('.menu-mobile-btn').addEventListener('click', () => {
-        alert("Menú Merchani:\n1. Productos\n2. Nuestros clientes\n3. Precios\n4. Login");
-    });
 </script>
 
 </body>
 </html>
-
