@@ -13,24 +13,18 @@
             --full-blue: #2E5BFF;
             --charcoal: #333F48;
             --bright-snow: #FFFFFF;
+            --platinum: #F0F2F5;
         }
 
         * { box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; margin: 0; background-color: var(--bright-snow); }
 
-        /* HEADER */
-        header {
-            background: var(--bright-snow);
-            padding: 1rem 5%;
-            display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky; top: 0; z-index: 1000;
-        }
+        /* HEADER, CARRUSEL Y SECCIONES PREVIAS (Se mantienen igual) */
+        header { background: var(--bright-snow); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
         .logo-container img { height: 50px; }
         nav ul { list-style: none; display: flex; gap: 30px; align-items: center; margin: 0; }
         nav a { text-decoration: none; color: var(--space-indigo); font-weight: 600; }
 
-        /* CARRUSEL CON 5 IMÁGENES Y DOTS */
         .hero-carousel { width: 100%; overflow: hidden; position: relative; }
         .carousel-track { display: flex; transition: transform 0.6s ease-in-out; }
         .slide { min-width: 100%; height: 75vh; display: flex; align-items: center; justify-content: center; background-size: cover; background-position: center; }
@@ -39,48 +33,53 @@
         .dot { height: 10px; width: 10px; background: rgba(255,255,255,0.4); border-radius: 50%; cursor: pointer; }
         .dot.active { background: white; width: 25px; border-radius: 5px; }
 
-        /* PRODUCTOS ALINEADOS */
         .catalog-container { padding: 5rem 5%; max-width: 1400px; margin: 0 auto; }
-        .catalog-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; }
-        .card { 
-            background: white; border-radius: 12px; overflow: hidden; 
-            border: 1px solid #eee; display: flex; flex-direction: column; 
-            transition: 0.3s;
-        }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
+        .catalog-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+        .card { background: white; border-radius: 12px; overflow: hidden; border: 1px solid #eee; display: flex; flex-direction: column; transition: 0.3s; }
         .card-img { width: 100%; height: 160px; object-fit: cover; }
         .card-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; text-align: center; }
-        .card h3 { color: var(--space-indigo); margin-top: 0; }
-        .card p { font-size: 0.9rem; color: var(--charcoal); margin-bottom: 2rem; }
-        .btn-card { 
-            margin-top: auto; /* Empuja el botón al final para que todos queden alineados */
-            background: var(--full-blue); color: white; padding: 0.7rem; 
-            text-decoration: none; border-radius: 6px; font-weight: 600; 
+        .btn-card { margin-top: auto; background: var(--full-blue); color: white; padding: 0.7rem; text-decoration: none; border-radius: 6px; font-weight: 600; }
+
+        .app-section { width: 100%; height: 450px; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; }
+        .app-box { background: white; padding: 3rem; border-radius: 15px; text-align: center; max-width: 600px; }
+        .btn-now { background: var(--fresh-sky); color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: 700; }
+
+        /* --- NUEVA SECCIÓN: NUESTROS CLIENTES --- */
+        .clients-section { padding: 5rem 5%; background-color: var(--platinum); }
+        .clients-title { text-align: center; margin-bottom: 3rem; font-family: 'Plus Jakarta Sans'; color: var(--space-indigo); }
+        
+        .clients-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 1.5rem; 
+            max-width: 1400px; margin: 0 auto;
         }
 
-        /* SECCIÓN APP MÓVIL ACTUALIZADA */
-        .app-section {
-            width: 100%; height: 500px;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=1600&q=80');
-            background-size: cover; background-position: center;
-            display: flex; align-items: center; justify-content: center;
+        .client-card {
+            background: white; border-radius: 20px; padding: 2rem;
+            text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: flex; flex-direction: column; align-items: center;
+            border: 1px solid #e0e0e0;
         }
-        .app-box {
-            background: white; padding: 3rem; border-radius: 15px; text-align: center;
-            max-width: 600px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        .app-box h2 { color: var(--space-indigo); font-family: 'Plus Jakarta Sans'; margin-bottom: 10px; }
-        .app-box p { font-size: 1.1rem; margin-bottom: 2rem; }
-        .btn-now { 
-            background: var(--fresh-sky); color: white; padding: 1rem 2rem; 
-            text-decoration: none; border-radius: 8px; font-weight: 700; transition: 0.3s;
-        }
-        .btn-now:hover { background: var(--full-blue); }
 
-        .spacer { height: 100px; } /* Espacio al final de la página */
+        .client-logo { width: 80px; height: 80px; object-fit: contain; margin-bottom: 1rem; }
+        .product-tag { 
+            background: var(--fresh-sky); color: white; font-size: 0.75rem; 
+            padding: 4px 12px; border-radius: 20px; font-weight: 600; margin-bottom: 0.5rem;
+        }
+        .client-name { color: var(--space-indigo); margin: 0.5rem 0; font-size: 1.2rem; }
+        .client-desc { font-size: 0.85rem; color: var(--charcoal); margin-bottom: 1.5rem; line-height: 1.4; }
+        
+        .qr-code { width: 100px; height: 100px; margin-bottom: 1.5rem; border: 1px solid #f0f0f0; padding: 5px; }
 
-        @media (max-width: 1024px) { .catalog-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 650px) { .catalog-grid { grid-template-columns: 1fr; } }
+        .store-btns { display: flex; gap: 10px; justify-content: center; }
+        .store-btns i { 
+            font-size: 1.5rem; color: var(--space-indigo); 
+            transition: color 0.3s; cursor: pointer; 
+        }
+        .store-btns i:hover { color: var(--full-blue); }
+
+        .spacer { height: 100px; }
     </style>
 </head>
 <body>
@@ -99,21 +98,11 @@
 
 <section class="hero-carousel">
     <div class="carousel-track" id="track">
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1600')">
-            <div class="slide-overlay"><h2>Innovación en tu Mano</h2><p>Gestiona tu empresa desde cualquier lugar</p></div>
-        </div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1551288049-bbbda536339a?w=1600')">
-            <div class="slide-overlay"><h2>Información en tiempo real</h2><p>Decisiones inteligentes basadas en información</p></div>
-        </div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1600')">
-            <div class="slide-overlay"><h2>Conectividad Global</h2><p>Tu industria operando sin fronteras</p></div>
-        </div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600')">
-            <div class="slide-overlay"><h2>Análisis de Futuro</h2><p>Anticípate a los cambios con IA</p></div>
-        </div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600')">
-            <div class="slide-overlay"><h2>Soporte Total</h2><p>Acompañamos tu transformación digital</p></div>
-        </div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1600')"><div class="slide-overlay"><h2>Innovación en tu Mano</h2><p>Gestiona tu empresa desde cualquier lugar</p></div></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1551288049-bbbda536339a?w=1600')"><div class="slide-overlay"><h2>Información en tiempo real</h2><p>Decisiones inteligentes basadas en información</p></div></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1600')"><div class="slide-overlay"><h2>Conectividad Global</h2><p>Tu industria operando sin fronteras</p></div></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600')"><div class="slide-overlay"><h2>Análisis de Futuro</h2><p>Anticípate a los cambios con IA</p></div></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600')"><div class="slide-overlay"><h2>Soporte Total</h2><p>Acompañamos tu transformación digital</p></div></div>
     </div>
     <div class="carousel-dots" id="dots-container">
         <span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
@@ -123,36 +112,20 @@
 <main class="catalog-container">
     <div class="catalog-grid">
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=400" class="card-img" alt="Tienda Móvil">
-            <div class="card-body">
-                <h3>Mi tienda móvil</h3>
-                <p>Lleva tus ventas e inventario a donde quiera que vayas.</p>
-                <a href="#" class="btn-card">Conocer más</a>
-            </div>
+            <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=400" class="card-img">
+            <div class="card-body"><h3>Mi tienda móvil</h3><p>Ventas e inventario en tu mano.</p><a href="#" class="btn-card">Conocer más</a></div>
         </div>
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400" class="card-img" alt="Bazar">
-            <div class="card-body">
-                <h3>Bazar</h3>
-                <p>La mejor solución para comercio minorista ágil.</p>
-                <a href="#" class="btn-card">Conocer más</a>
-            </div>
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400" class="card-img">
+            <div class="card-body"><h3>Bazar</h3><p>Comercio minorista ágil.</p><a href="#" class="btn-card">Conocer más</a></div>
         </div>
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400" class="card-img" alt="Corporativo">
-            <div class="card-body">
-                <h3>Corporativo</h3>
-                <p>Gestión avanzada para empresas de gran escala.</p>
-                <a href="#" class="btn-card">Conocer más</a>
-            </div>
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400" class="card-img">
+            <div class="card-body"><h3>Corporativo</h3><p>Gestión avanzada a gran escala.</p><a href="#" class="btn-card">Conocer más</a></div>
         </div>
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400" class="card-img" alt="Plaza">
-            <div class="card-body">
-                <h3>Plaza Comercial</h3>
-                <p>Administra múltiples locales desde un solo punto.</p>
-                <a href="#" class="btn-card">Conocer más</a>
-            </div>
+            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400" class="card-img">
+            <div class="card-body"><h3>Plaza Comercial</h3><p>Administra múltiples locales.</p><a href="#" class="btn-card">Conocer más</a></div>
         </div>
     </div>
 </main>
@@ -165,25 +138,65 @@
     </div>
 </section>
 
+<section class="clients-section">
+    <h2 class="clients-title">Nuestros Clientes</h2>
+    <div class="clients-grid">
+        <div class="client-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" class="client-logo">
+            <span class="product-tag">Corporativo</span>
+            <h3 class="client-name">TechLogistics</h3>
+            <p class="client-desc">Líderes en cadena de suministro global y distribución.</p>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Merchani_Client1" class="qr-code">
+            <div class="store-btns"><i class="fa-brands fa-google-play"></i><i class="fa-brands fa-apple"></i></div>
+        </div>
+        <div class="client-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968260.png" class="client-logo">
+            <span class="product-tag">Bazar</span>
+            <h3 class="client-name">Moda Urbana</h3>
+            <p class="client-desc">Boutique de ropa con presencia en las principales ciudades.</p>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Merchani_Client2" class="qr-code">
+            <div class="store-btns"><i class="fa-brands fa-google-play"></i><i class="fa-brands fa-apple"></i></div>
+        </div>
+        <div class="client-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" class="client-logo">
+            <span class="product-tag">Mi tienda móvil</span>
+            <h3 class="client-name">EcoMarket</h3>
+            <p class="client-desc">Distribución de productos orgánicos y sustentables.</p>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Merchani_Client3" class="qr-code">
+            <div class="store-btns"><i class="fa-brands fa-google-play"></i><i class="fa-brands fa-apple"></i></div>
+        </div>
+        <div class="client-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111324.png" class="client-logo">
+            <span class="product-tag">Plaza Comercial</span>
+            <h3 class="client-name">Centro Plaza</h3>
+            <p class="client-desc">Administración integral de locales comerciales de lujo.</p>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Merchani_Client4" class="qr-code">
+            <div class="store-btns"><i class="fa-brands fa-google-play"></i><i class="fa-brands fa-apple"></i></div>
+        </div>
+        <div class="client-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/3063/3063176.png" class="client-logo">
+            <span class="product-tag">Corporativo</span>
+            <h3 class="client-name">Industrias Alfa</h3>
+            <p class="client-desc">Fabricación de componentes metálicos de alta precisión.</p>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Merchani_Client5" class="qr-code">
+            <div class="store-btns"><i class="fa-brands fa-google-play"></i><i class="fa-brands fa-apple"></i></div>
+        </div>
+    </div>
+</section>
+
 <div class="spacer"></div>
 
 <script>
     const track = document.getElementById('track');
     const dots = document.querySelectorAll('.dot');
     let current = 0;
-
     function move(index) {
         current = index;
         track.style.transform = `translateX(-${current * 100}%)`;
         dots.forEach((d, i) => d.classList.toggle('active', i === current));
     }
-
     dots.forEach((dot, i) => dot.addEventListener('click', () => move(i)));
-
-    setInterval(() => {
-        current = (current + 1) % 5;
-        move(current);
-    }, 5000);
+    setInterval(() => { current = (current + 1) % 5; move(current); }, 5000);
 </script>
 
 </body>
