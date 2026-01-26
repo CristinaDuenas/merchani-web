@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merchani - Innovación Industrial</title>
+    <title>Merchani - Soluciones Industriales</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -42,30 +42,28 @@
         .card-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; text-align: center; }
         .btn-card { margin-top: auto; background: var(--full-blue); color: white; padding: 0.7rem; text-decoration: none; border-radius: 6px; font-weight: 600; }
 
-        /* APP MÓVIL BANNER */
+        /* TU APLICACIÓN MÓVIL BANNER */
         .app-section { width: 100%; height: 450px; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; }
         .app-box { background: white; padding: 3rem; border-radius: 15px; text-align: center; max-width: 600px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
         .btn-now { background: var(--fresh-sky); color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: 700; display: inline-block; margin-top: 15px; }
 
-        /* SECCIÓN ALGUNOS CLIENTES CON DOBLE QR */
+        /* ALGUNOS DE NUESTROS CLIENTES (5 TARJETAS) */
         .clients-section { padding: 5rem 5%; background-color: var(--platinum); }
         .clients-title { text-align: center; margin-bottom: 3rem; font-family: 'Plus Jakarta Sans'; color: var(--space-indigo); }
-        .clients-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; max-width: 1400px; margin: 0 auto; }
+        .clients-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; max-width: 1400px; margin: 0 auto; }
         
-        .client-card { background: white; border-radius: 20px; padding: 2rem; text-align: center; border: 1px solid #e0e0e0; transition: transform 0.3s; }
-        .client-card:hover { transform: translateY(-5px); }
-        .client-logo { width: 60px; height: 60px; object-fit: contain; margin-bottom: 10px; }
-        .product-tag { background: var(--fresh-sky); color: white; font-size: 0.7rem; padding: 3px 10px; border-radius: 15px; font-weight: 600; }
-        .client-desc { font-size: 0.85rem; color: var(--charcoal); margin: 15px 0; min-height: 40px; }
+        .client-card { background: white; border-radius: 20px; padding: 2rem; text-align: center; border: 1px solid #e0e0e0; display: flex; flex-direction: column; align-items: center; transition: 0.3s; }
+        .client-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .client-logo { width: 70px; height: 70px; object-fit: contain; margin-bottom: 10px; }
+        .product-tag { background: var(--fresh-sky); color: white; font-size: 0.75rem; padding: 4px 12px; border-radius: 15px; font-weight: 600; margin-bottom: 10px; }
+        .client-name { color: var(--space-indigo); margin: 10px 0; font-size: 1.2rem; }
+        .client-desc { font-size: 0.85rem; color: var(--charcoal); margin-bottom: 20px; line-height: 1.4; min-height: 40px; }
+        
+        .client-download-btns { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+        .btn-client-dl { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--space-indigo); color: white; text-decoration: none; padding: 10px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; transition: 0.3s; }
+        .btn-client-dl:hover { background: var(--full-blue); }
 
-        .qr-container { display: flex; justify-content: space-around; gap: 10px; margin-top: 20px; }
-        .qr-wrapper { display: flex; flex-direction: column; align-items: center; gap: 5px; }
-        .qr-wrapper img { width: 85px; height: 85px; border: 1px solid #eee; padding: 4px; transition: transform 0.3s; cursor: pointer; }
-        .qr-wrapper img:hover { transform: scale(1.5); box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index: 10; background: white; }
-        .qr-label { font-size: 0.7rem; font-weight: 700; color: var(--space-indigo); }
-        .qr-label i { margin-right: 3px; }
-
-        /* CONTACTO */
+        /* CONTACTANOS */
         .contact-section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
         .contact-left { display: flex; flex-direction: column; justify-content: center; }
         .contact-left img { height: 70px; width: fit-content; margin-bottom: 2rem; }
@@ -79,13 +77,19 @@
         .btn-submit { background: var(--space-indigo); color: white; border: none; padding: 15px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .btn-submit:hover { background: var(--full-blue); }
 
-        /* FOOTER */
-        footer { background: var(--space-indigo); color: white; text-align: center; padding: 2rem; font-size: 0.9rem; }
+        /* FOOTER FINAL (Basado en imagen Final.jpg) */
+        .main-footer { padding: 4rem 5% 2rem; border-top: 1px solid #eee; }
+        .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1400px; margin: 0 auto; }
+        .footer-column h4 { font-family: 'Plus Jakarta Sans'; color: var(--space-indigo); margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .footer-column ul { list-style: none; padding: 0; margin: 0; }
+        .footer-column ul li { margin-bottom: 10px; }
+        .footer-column ul li a { text-decoration: none; color: var(--charcoal); font-size: 0.9rem; transition: 0.3s; }
+        .footer-column ul li a:hover { color: var(--fresh-sky); }
 
         @media (max-width: 900px) {
             .contact-section { grid-template-columns: 1fr; text-align: center; }
             .contact-left { align-items: center; }
-            .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+            .catalog-grid, .footer-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -150,43 +154,60 @@
     <div class="clients-grid">
         <div class="client-card">
             <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" class="client-logo">
-            <div><span class="product-tag">Corporativo</span></div>
+            <span class="product-tag">Corporativo</span>
             <h3 class="client-name">TechLogistics</h3>
-            <p class="client-desc">Líderes en cadena de suministro global.</p>
-            <div class="qr-container">
-                <div class="qr-wrapper">
-                    <span class="qr-label"><i class="fa-brands fa-google-play"></i> Android</span>
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PlayStore_Link" alt="QR Android">
-                </div>
-                <div class="qr-wrapper">
-                    <span class="qr-label"><i class="fa-brands fa-apple"></i> iOS</span>
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=AppStore_Link" alt="QR iOS">
-                </div>
+            <p class="client-desc">Líderes en cadena de suministro global y distribución.</p>
+            <div class="client-download-btns">
+                <a href="#" class="btn-client-dl"><i class="fa-brands fa-google-play"></i> Descargar de Google Play</a>
+                <a href="#" class="btn-client-dl"><i class="fa-brands fa-apple"></i> Descargar de Apple Store</a>
             </div>
         </div>
         <div class="client-card">
             <img src="https://cdn-icons-png.flaticon.com/512/5968/5968260.png" class="client-logo">
-            <div><span class="product-tag">Bazar</span></div>
+            <span class="product-tag">Bazar</span>
             <h3 class="client-name">Moda Urbana</h3>
-            <p class="client-desc">Boutique de ropa con presencia nacional.</p>
-            <div class="qr-container">
-                <div class="qr-wrapper">
-                    <span class="qr-label"><i class="fa-brands fa-google-play"></i> Android</span>
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PlayStore_Link" alt="QR Android">
-                </div>
-                <div class="qr-wrapper">
-                    <span class="qr-label"><i class="fa-brands fa-apple"></i> iOS</span>
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=AppStore_Link" alt="QR iOS">
-                </div>
+            <p class="client-desc">Boutique de ropa con presencia en las principales ciudades.</p>
+            <div class="client-download-btns">
+                <a href="#" class="btn-client-dl"><i class="fa-brands fa-google-play"></i> Descargar de Google Play</a>
+                <a href="#" class="btn-client-dl"><i class="fa-brands fa-apple"></i> Descargar de Apple Store</a>
             </div>
         </div>
+        <div class="client-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" class="client-logo">
+            <span class="product-tag">Mi tienda móvil</span>
+            <h3 class="client-name">EcoMarket</h3>
+            <p class="client-desc">Distribución de productos orgánicos y sustentables.</p>
+            <div class="client-download-btns">
+                <a href="#" class="btn-client-dl"><i class="fa-brands fa-google-play"></i> Descargar de Google Play</a>
+                <a href="#" class="btn-client-dl"><i class="fa-brands fa-apple"></i> Descargar de Apple Store</a>
+            </div>
         </div>
+        <div class="client-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111324.png" class="client-logo">
+            <span class="product-tag">Plaza Comercial</span>
+            <h3 class="client-name">Centro Plaza</h3>
+            <p class="client-desc">Administración integral de locales comerciales de lujo.</p>
+            <div class="client-download-btns">
+                <a href="#" class="btn-client-dl"><i class="fa-brands fa-google-play"></i> Descargar de Google Play</a>
+                <a href="#" class="btn-client-dl"><i class="fa-brands fa-apple"></i> Descargar de Apple Store</a>
+            </div>
+        </div>
+        <div class="client-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/3063/3063176.png" class="client-logo">
+            <span class="product-tag">Corporativo</span>
+            <h3 class="client-name">Industrias Alfa</h3>
+            <p class="client-desc">Fabricación de componentes metálicos de alta precisión.</p>
+            <div class="client-download-btns">
+                <a href="#" class="btn-client-dl"><i class="fa-brands fa-google-play"></i> Descargar de Google Play</a>
+                <a href="#" class="btn-client-dl"><i class="fa-brands fa-apple"></i> Descargar de Apple Store</a>
+            </div>
+        </div>
+    </div>
 </section>
 
 <section class="contact-section">
     <div class="contact-left">
         <img src="TU_URL_DE_LOGO_AQUI" alt="Merchani Logo">
-        <p>Síguenos en nuestras redes sociales:</p>
         <div class="social-links">
             <a href="#"><i class="fa-brands fa-facebook"></i></a>
             <a href="#"><i class="fa-brands fa-instagram"></i></a>
@@ -199,15 +220,46 @@
             <h2 style="margin-top:0; color:var(--space-indigo);">Contáctanos</h2>
             <input type="text" placeholder="Nombre completo" required>
             <input type="email" placeholder="Correo electrónico" required>
-            <input type="text" placeholder="Asunto">
-            <textarea rows="5" placeholder="Tu mensaje..." required></textarea>
+            <textarea rows="4" placeholder="Tu mensaje..." required></textarea>
             <button type="submit" class="btn-submit">Enviar Mensaje</button>
         </form>
     </div>
 </section>
 
-<footer>
-    <p>&copy; 2026 Merchani Soluciones Industriales. Todos los derechos reservados.</p>
+<footer class="main-footer">
+    <div class="footer-grid">
+        <div class="footer-column">
+            <h4>Compañía</h4>
+            <ul>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Privacy</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Merchani for</h4>
+            <ul>
+                <li><a href="#">Malls</a></li>
+                <li><a href="#">Enterprice</a></li>
+                <li><a href="#">Bazar</a></li>
+                <li><a href="#">Small Business</a></li>
+                <li><a href="#">Entrepreneur</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Resources</h4>
+            <ul>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Academy</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Partner program</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Merchani. Todos los derechos reservados.</p>
+    </div>
 </footer>
 
 <script>
