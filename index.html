@@ -42,61 +42,71 @@
         .card-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; text-align: center; }
         .btn-card { margin-top: auto; background: var(--full-blue); color: white; padding: 0.7rem; text-decoration: none; border-radius: 6px; font-weight: 600; }
 
-        /* TU APLICACIÓN MÓVIL BANNER */
+        /* APP BANNER */
         .app-section { width: 100%; height: 450px; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; }
-        .app-box { background: white; padding: 3rem; border-radius: 15px; text-align: center; max-width: 600px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .app-box { background: white; padding: 3rem; border-radius: 15px; text-align: center; max-width: 600px; }
         .btn-now { background: var(--fresh-sky); color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: 700; display: inline-block; margin-top: 15px; }
 
-        /* ALGUNOS DE NUESTROS CLIENTES (5 TARJETAS) */
+        /* SECCIÓN CLIENTES AJUSTADA */
         .clients-section { padding: 5rem 5%; background-color: var(--platinum); }
         .clients-title { text-align: center; margin-bottom: 3rem; font-family: 'Plus Jakarta Sans'; color: var(--space-indigo); }
-        .clients-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; max-width: 1400px; margin: 0 auto; }
+        .clients-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; max-width: 1400px; margin: 0 auto; }
         
-        .client-card { background: white; border-radius: 20px; padding: 2rem; text-align: center; border: 1px solid #e0e0e0; display: flex; flex-direction: column; align-items: center; transition: 0.3s; }
-        .client-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .client-logo { width: 70px; height: 70px; object-fit: contain; margin-bottom: 10px; }
-        .product-tag { background: var(--fresh-sky); color: white; font-size: 0.75rem; padding: 4px 12px; border-radius: 15px; font-weight: 600; margin-bottom: 10px; }
-        .client-name { color: var(--space-indigo); margin: 10px 0; font-size: 1.2rem; }
-        .client-desc { font-size: 0.85rem; color: var(--charcoal); margin-bottom: 20px; line-height: 1.4; min-height: 40px; }
+        .client-card { background: white; border-radius: 20px; padding: 1.5rem; text-align: center; border: 1px solid #e0e0e0; display: flex; flex-direction: column; align-items: center; }
+        .client-logo { width: 60px; height: 60px; object-fit: contain; margin-bottom: 10px; }
         
-        .client-download-btns { display: flex; flex-direction: column; gap: 8px; width: 100%; }
-        .btn-client-dl { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--space-indigo); color: white; text-decoration: none; padding: 10px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; transition: 0.3s; }
+        /* Simetría en productos contratados */
+        .product-tag { 
+            background: var(--fresh-sky); color: white; font-size: 0.7rem; 
+            width: 140px; height: 28px; display: flex; align-items: center; justify-content: center;
+            border-radius: 15px; font-weight: 600; margin-bottom: 10px; 
+        }
+        
+        .client-name { color: var(--space-indigo); margin: 5px 0; font-size: 1.1rem; }
+        .client-desc { font-size: 0.8rem; color: var(--charcoal); margin-bottom: 15px; line-height: 1.3; min-height: 42px; }
+        
+        /* Botones de descarga más pequeños y centrados */
+        .client-download-btns { display: flex; flex-direction: column; gap: 6px; width: 85%; }
+        .btn-client-dl { 
+            display: flex; align-items: center; justify-content: center; gap: 6px; 
+            background: var(--space-indigo); color: white; text-decoration: none; 
+            padding: 6px 12px; border-radius: 6px; font-size: 0.7rem; font-weight: 600; transition: 0.3s; 
+        }
         .btn-client-dl:hover { background: var(--full-blue); }
 
-        /* CONTACTANOS */
+        /* CONTACTANOS CON REDES EXTRA */
         .contact-section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-        .contact-left { display: flex; flex-direction: column; justify-content: center; }
-        .contact-left img { height: 70px; width: fit-content; margin-bottom: 2rem; }
-        .social-links { display: flex; gap: 20px; margin-top: 1rem; }
-        .social-links a { font-size: 1.8rem; color: var(--space-indigo); transition: color 0.3s; }
-        .social-links a:hover { color: var(--fresh-sky); }
+        .contact-left img { height: 60px; margin-bottom: 1.5rem; }
+        .social-links { display: flex; gap: 15px; margin-top: 1rem; flex-wrap: wrap; }
+        .social-links a { font-size: 1.5rem; color: var(--space-indigo); transition: 0.3s; }
+        .social-links a:hover { color: var(--fresh-sky); transform: scale(1.1); }
 
-        .contact-right { background: var(--platinum); padding: 3rem; border-radius: 15px; }
-        .contact-form { display: flex; flex-direction: column; gap: 15px; }
-        .contact-form input, .contact-form textarea { padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-family: inherit; }
-        .btn-submit { background: var(--space-indigo); color: white; border: none; padding: 15px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.3s; }
-        .btn-submit:hover { background: var(--full-blue); }
+        .contact-right { background: var(--platinum); padding: 2.5rem; border-radius: 15px; }
+        .contact-form { display: flex; flex-direction: column; gap: 12px; }
+        .contact-form input, .contact-form textarea { padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; }
+        .btn-submit { background: var(--space-indigo); color: white; border: none; padding: 12px; border-radius: 6px; font-weight: 700; cursor: pointer; }
 
-        /* FOOTER FINAL (Basado en imagen Final.jpg) */
-        .main-footer { padding: 4rem 5% 2rem; border-top: 1px solid #eee; }
+        /* FOOTER AZUL OSCURO */
+        .main-footer { background-color: var(--space-indigo); color: white; padding: 4rem 5% 2rem; }
         .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1400px; margin: 0 auto; }
-        .footer-column h4 { font-family: 'Plus Jakarta Sans'; color: var(--space-indigo); margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .footer-column h4 { font-family: 'Plus Jakarta Sans'; color: var(--bright-snow); margin-bottom: 1.5rem; font-size: 1.1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
         .footer-column ul { list-style: none; padding: 0; margin: 0; }
         .footer-column ul li { margin-bottom: 10px; }
-        .footer-column ul li a { text-decoration: none; color: var(--charcoal); font-size: 0.9rem; transition: 0.3s; }
-        .footer-column ul li a:hover { color: var(--fresh-sky); }
+        .footer-column ul li a { text-decoration: none; color: rgba(255,255,255,0.8); font-size: 0.85rem; transition: 0.3s; }
+        .footer-column ul li a:hover { color: var(--fresh-sky); padding-left: 5px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 3rem; padding-top: 2rem; text-align: center; font-size: 0.8rem; opacity: 0.7; }
 
         @media (max-width: 900px) {
-            .contact-section { grid-template-columns: 1fr; text-align: center; }
-            .contact-left { align-items: center; }
-            .catalog-grid, .footer-grid { grid-template-columns: 1fr; }
+            .contact-section, .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .social-links { justify-content: center; }
+            .catalog-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo-container"><img src="TU_URL_DE_LOGO_AQUI" alt="Merchani Logo"></div>
+    <div class="logo-container"><img src="Logo nuevo.png" alt="Merchani Logo"></div>
     <nav>
         <ul>
             <li><a href="#">Productos</a></li>
@@ -156,50 +166,50 @@
             <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" class="client-logo">
             <span class="product-tag">Corporativo</span>
             <h3 class="client-name">TechLogistics</h3>
-            <p class="client-desc">Líderes en cadena de suministro global y distribución.</p>
+            <p class="client-desc">Líderes en cadena de suministro global.</p>
             <div class="client-download-btns">
-                <a href="#" class="btn-client-dl"><i class="fa-brands fa-google-play"></i> Descargar de Google Play</a>
-                <a href="#" class="btn-client-dl"><i class="fa-brands fa-apple"></i> Descargar de Apple Store</a>
+                <a href="#" class="btn-client-dl"><i class="fa-brands fa-google-play"></i> Google Play</a>
+                <a href="#" class="btn-client-dl"><i class="fa-brands fa-apple"></i> Apple Store</a>
             </div>
         </div>
         <div class="client-card">
             <img src="https://cdn-icons-png.flaticon.com/512/5968/5968260.png" class="client-logo">
             <span class="product-tag">Bazar</span>
             <h3 class="client-name">Moda Urbana</h3>
-            <p class="client-desc">Boutique de ropa con presencia en las principales ciudades.</p>
+            <p class="client-desc">Boutique de ropa en ciudades principales.</p>
             <div class="client-download-btns">
-                <a href="#" class="btn-client-dl"><i class="fa-brands fa-google-play"></i> Descargar de Google Play</a>
-                <a href="#" class="btn-client-dl"><i class="fa-brands fa-apple"></i> Descargar de Apple Store</a>
+                <a href="#" class="btn-client-dl"><i class="fa-brands fa-google-play"></i> Google Play</a>
+                <a href="#" class="btn-client-dl"><i class="fa-brands fa-apple"></i> Apple Store</a>
             </div>
         </div>
         <div class="client-card">
             <img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" class="client-logo">
             <span class="product-tag">Mi tienda móvil</span>
             <h3 class="client-name">EcoMarket</h3>
-            <p class="client-desc">Distribución de productos orgánicos y sustentables.</p>
+            <p class="client-desc">Productos orgánicos y sustentables.</p>
             <div class="client-download-btns">
-                <a href="#" class="btn-client-dl"><i class="fa-brands fa-google-play"></i> Descargar de Google Play</a>
-                <a href="#" class="btn-client-dl"><i class="fa-brands fa-apple"></i> Descargar de Apple Store</a>
+                <a href="#" class="btn-client-dl"><i class="fa-brands fa-google-play"></i> Google Play</a>
+                <a href="#" class="btn-client-dl"><i class="fa-brands fa-apple"></i> Apple Store</a>
             </div>
         </div>
         <div class="client-card">
             <img src="https://cdn-icons-png.flaticon.com/512/2111/2111324.png" class="client-logo">
             <span class="product-tag">Plaza Comercial</span>
             <h3 class="client-name">Centro Plaza</h3>
-            <p class="client-desc">Administración integral de locales comerciales de lujo.</p>
+            <p class="client-desc">Gestión de locales comerciales de lujo.</p>
             <div class="client-download-btns">
-                <a href="#" class="btn-client-dl"><i class="fa-brands fa-google-play"></i> Descargar de Google Play</a>
-                <a href="#" class="btn-client-dl"><i class="fa-brands fa-apple"></i> Descargar de Apple Store</a>
+                <a href="#" class="btn-client-dl"><i class="fa-brands fa-google-play"></i> Google Play</a>
+                <a href="#" class="btn-client-dl"><i class="fa-brands fa-apple"></i> Apple Store</a>
             </div>
         </div>
         <div class="client-card">
             <img src="https://cdn-icons-png.flaticon.com/512/3063/3063176.png" class="client-logo">
             <span class="product-tag">Corporativo</span>
             <h3 class="client-name">Industrias Alfa</h3>
-            <p class="client-desc">Fabricación de componentes metálicos de alta precisión.</p>
+            <p class="client-desc">Fabricación de componentes de precisión.</p>
             <div class="client-download-btns">
-                <a href="#" class="btn-client-dl"><i class="fa-brands fa-google-play"></i> Descargar de Google Play</a>
-                <a href="#" class="btn-client-dl"><i class="fa-brands fa-apple"></i> Descargar de Apple Store</a>
+                <a href="#" class="btn-client-dl"><i class="fa-brands fa-google-play"></i> Google Play</a>
+                <a href="#" class="btn-client-dl"><i class="fa-brands fa-apple"></i> Apple Store</a>
             </div>
         </div>
     </div>
@@ -207,12 +217,14 @@
 
 <section class="contact-section">
     <div class="contact-left">
-        <img src="TU_URL_DE_LOGO_AQUI" alt="Merchani Logo">
+        <img src="Logo nuevo.png" alt="Merchani Logo">
         <div class="social-links">
             <a href="#"><i class="fa-brands fa-facebook"></i></a>
             <a href="#"><i class="fa-brands fa-instagram"></i></a>
             <a href="#"><i class="fa-brands fa-linkedin"></i></a>
             <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
         </div>
     </div>
     <div class="contact-right">
