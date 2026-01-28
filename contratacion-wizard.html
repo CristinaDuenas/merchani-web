@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de Proyecto - Merchani</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --space-indigo: #1A2B4E;
+            --fresh-sky: #00A3E0;
+            --platinum: #F0F2F5;
+            --charcoal-blue: #333F48;
+            --cool-steel: #94A3B8;
+            --bright-snow: #F8FAFC;
+        }
+
+        * { box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--platinum); margin: 0; color: var(--charcoal-blue); }
+
+        header { background: white; padding: 1rem 5%; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo { height: 40px; }
+
+        .container { max-width: 750px; margin: 40px auto; padding: 0 20px; }
+
+        .wizard-steps { display: flex; justify-content: space-between; margin-bottom: 30px; position: relative; }
+        .wizard-steps::before { content: ""; position: absolute; top: 20px; left: 0; width: 100%; height: 2px; background: #E2E8F0; z-index: 1; }
+        .step-item { position: relative; z-index: 2; text-align: center; width: 33.33%; }
+        .step-number { width: 40px; height: 40px; background: white; border: 2px solid #E2E8F0; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: 700; transition: 0.3s; }
+        .step-item.active .step-number { border-color: var(--fresh-sky); background: var(--fresh-sky); color: white; }
+        .step-label { font-size: 0.75rem; font-weight: 600; color: var(--cool-steel); }
+
+        .wizard-card { background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); min-height: 520px; display: flex; flex-direction: column; }
+        .tab-content { display: none; flex-grow: 1; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        h2 { font-family: 'Plus Jakarta Sans'; color: var(--space-indigo); font-size: 1.4rem; margin-top: 0; margin-bottom: 1.5rem; }
+        .form-group { margin-bottom: 1.2rem; }
+        label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; }
+        input, textarea { width: 100%; padding: 12px; border: 1px solid #E2E8F0; border-radius: 10px; outline: none; font-family: inherit; }
+
+        /* PRODUCTOS */
+        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .product-box { border: 2px solid #F1F5F9; padding: 15px; border-radius: 12px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 15px; background: #fdfdfd; }
+        .product-box:hover { border-color: var(--fresh-sky); }
+        .product-box.selected { border-color: var(--fresh-sky); background: #F0F9FF; }
+        .product-box i { color: var(--fresh-sky); font-size: 1.4rem; width: 30px; text-align: center; }
+        .product-info div:first-child { font-weight: 700; font-size: 0.9rem; color: var(--space-indigo); margin-bottom: 2px; }
+        .product-info div:last-child { color: var(--cool-steel); font-size: 0.75rem; }
+
+        /* PAGO */
+        .summary-box-gray { background: #EDF0F2; border-radius: 10px; padding: 20px; margin-bottom: 25px; }
+        .summary-label { font-size: 0.85rem; color: var(--charcoal-blue); margin-bottom: 5px; }
+        .product-name-display { color: var(--fresh-sky); font-weight: 700; font-size: 1.1rem; margin-bottom: 15px; border-bottom: 1px solid #D1D5DB; padding-bottom: 10px; }
+        
+        .addon-counter { display: flex; justify-content: space-between; align-items: center; background: var(--bright-snow); padding: 12px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #E2E8F0; }
+        .counter-controls { display: flex; align-items: center; gap: 15px; }
+        .btn-qty { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--fresh-sky); background: white; color: var(--fresh-sky); cursor: pointer; font-weight: bold; }
+        
+        .price-line { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95rem; }
+        .price-total { display: flex; justify-content: space-between; font-weight: 800; font-size: 1.2rem; color: var(--space-indigo); margin-top: 10px; }
+        .currency-note { text-align: right; font-size: 0.75rem; color: var(--cool-steel); margin-top: 4px; }
+
+        .footer-btns { display: flex; justify-content: space-between; margin-top: 30px; }
+        .btn { padding: 14px 25px; border-radius: 10px; font-weight: 700; cursor: pointer; border: none; font-family: inherit; transition: 0.3s; }
+        .btn-prev { background: #E2E8F0; color: var(--charcoal-blue); }
+        .btn-next { background: var(--fresh-sky); color: white; flex-grow: 1; margin-left: 10px; }
+        .btn-next:disabled { background: #CBD5E1; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+
+<header><img src="Logo nuevo.png" class="logo"></header>
+
+<div class="container">
+    <div class="wizard-steps">
+        <div class="step-item active" id="s1"><div class="step-number">1</div><div class="step-label">Producto</div></div>
+        <div class="step-item" id="s2"><div class="step-number">2</div><div class="step-label">Información</div></div>
+        <div class="step-item" id="s3"><div class="step-number">3</div><div class="step-label">Pago</div></div>
+    </div>
+
+    <div class="wizard-card">
+        
+        <div class="tab-content active" id="tab1">
+            <h2>Selecciona la aplicación móvil que mejor se adapte a tus necesidades.</h2>
+            <div class="product-grid">
+                <div class="product-box" onclick="setProduct('Mi Aplicación Móvil', 'Tienda individual', this, false)">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    <div class="product-info">
+                        <div>Mi Aplicación Móvil</div>
+                        <div>Tienda individual</div>
+                    </div>
+                </div>
+                <div class="product-box" onclick="setProduct('Bazar', 'Con 3 locales incluidos', this, true, 'Locales Adicionales')">
+                    <i class="fa-solid fa-store"></i>
+                    <div class="product-info">
+                        <div>Bazar</div>
+                        <div>Con 3 locales incluidos</div>
+                    </div>
+                </div>
+                <div class="product-box" onclick="setProduct('Corporativo', 'Con 5 sucursales incluidas', this, true, 'Sucursales Adicionales')">
+                    <i class="fa-solid fa-building"></i>
+                    <div class="product-info">
+                        <div>Corporativo</div>
+                        <div>Con 5 sucursales incluidas</div>
+                    </div>
+                </div>
+                <div class="product-box" onclick="setProduct('Plaza Comercial', 'Con 3 tiendas incluidas', this, true, 'Tiendas Adicionales')">
+                    <i class="fa-solid fa-city"></i>
+                    <div class="product-info">
+                        <div>Plaza Comercial</div>
+                        <div>Con 3 tiendas incluidas</div>
+                    </div>
+                </div>
+                <div class="product-box" onclick="setProduct('Mi Tienda Express', 'Activación inmediata', this, false)">
+                    <i class="fa-solid fa-bolt-lightning"></i>
+                    <div class="product-info">
+                        <div>Mi Tienda Express</div>
+                        <div>Activación inmediata</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="tab2">
+            <h2>Cuéntanos de tu negocio</h2>
+            <div class="form-group"><label>Nombre de la Tienda / Ecosistema</label><input type="text" placeholder="Ej: Plaza Central"></div>
+            <div class="form-group"><label>Domicilio Físico</label><input type="text" placeholder="Calle, Ciudad, Estado"></div>
+            <div class="form-group"><label>Método de Contacto</label><input type="text" placeholder="WhatsApp / Teléfono"></div>
+            <div class="form-group"><label>Resumen de tu tienda</label><textarea rows="3" placeholder="Describe brevemente tu oferta"></textarea></div>
+        </div>
+
+        <div class="tab-content" id="tab3">
+            <h2>Finalizar Contratación</h2>
+            
+            <div class="summary-box-gray">
+                <div class="summary-label">Producto seleccionado:</div>
+                <div id="res-prod-name" class="product-name-display">-</div>
+                <div class="price-line">
+                    <span id="res-prod-desc" style="font-weight: 500; color: var(--charcoal-blue);">Descripción</span>
+                </div>
+            </div>
+
+            <div id="addon-section" style="display:none; margin-bottom: 20px;">
+                <label>¿Deseas contratar espacios adicionales? ($500 c/u)</label>
+                <div class="addon-counter">
+                    <span id="addon-label" style="font-weight: 600;">Adicionales</span>
+                    <div class="counter-controls">
+                        <button class="btn-qty" onclick="updateQty(-1)">-</button>
+                        <span id="qty-val" style="font-weight: 700; width: 20px; text-align: center;">0</span>
+                        <button class="btn-qty" onclick="updateQty(1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding: 0 5px;">
+                <div class="price-line"><span>Subtotal</span><span id="res-subtotal">$2,000.00</span></div>
+                <div class="price-line" id="extra-line" style="display:none;"><span>Adicionales (<span id="extra-qty-label">0</span>)</span><span id="res-extra-price">$0.00</span></div>
+                <div class="price-line"><span>IVA (16%)</span><span id="res-iva">$0.00</span></div>
+                
+                <div class="price-total">
+                    <span>Total Mensual</span>
+                    <span id="res-total">$0.00</span>
+                </div>
+                <div class="currency-note">Precios dados en pesos mexicanos.</div>
+            </div>
+        </div>
+
+        <div class="footer-btns">
+            <button class="btn btn-prev" id="prevBtn" onclick="changeTab(-1)" style="display:none;">Anterior</button>
+            <button class="btn btn-next" id="nextBtn" onclick="changeTab(1)" disabled>Siguiente</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let currentTab = 1;
+    const basePrice = 2000;
+    let extraQty = 0;
+    const unitExtraPrice = 500;
+    let selectedProductName = "";
+    let selectedProductDesc = "";
+
+    function changeTab(n) {
+        if (n === 1 && currentTab === 3) {
+            alert("Redirigiendo a Stripe...");
+            return;
+        }
+        document.getElementById('tab' + currentTab).classList.remove('active');
+        document.getElementById('s' + currentTab).classList.remove('active');
+        currentTab += n;
+        document.getElementById('tab' + currentTab).classList.add('active');
+        document.getElementById('s' + currentTab).classList.add('active');
+        
+        document.getElementById('prevBtn').style.display = (currentTab === 1) ? 'none' : 'block';
+        document.getElementById('nextBtn').innerText = (currentTab === 3) ? 'Confirmar y Pagar' : 'Siguiente';
+        
+        if(currentTab === 3) calculateTotal();
+    }
+
+    function setProduct(name, desc, el, canAddMore, label = "") {
+        document.querySelectorAll('.product-box').forEach(b => b.classList.remove('selected'));
+        el.classList.add('selected');
+        selectedProductName = name;
+        selectedProductDesc = desc;
+        extraQty = 0;
+        document.getElementById('qty-val').innerText = "0";
+        document.getElementById('addon-label').innerText = label;
+        document.getElementById('addon-section').style.display = canAddMore ? 'block' : 'none';
+        document.getElementById('nextBtn').disabled = false;
+    }
+
+    function updateQty(n) {
+        extraQty = Math.max(0, extraQty + n);
+        document.getElementById('qty-val').innerText = extraQty;
+        calculateTotal();
+    }
+
+    function calculateTotal() {
+        let extraTotal = extraQty * unitExtraPrice;
+        let subtotal = basePrice + extraTotal;
+        let iva = subtotal * 0.16;
+        let total = subtotal + iva;
+
+        document.getElementById('extra-line').style.display = extraQty > 0 ? 'flex' : 'none';
+        document.getElementById('extra-qty-label').innerText = extraQty;
+        document.getElementById('res-extra-price').innerText = '$' + extraTotal.toLocaleString('es-MX', {minimumFractionDigits: 2});
+
+        document.getElementById('res-prod-name').innerText = selectedProductName;
+        document.getElementById('res-prod-desc').innerText = selectedProductDesc;
+        document.getElementById('res-subtotal').innerText = '$' + subtotal.toLocaleString('es-MX', {minimumFractionDigits: 2});
+        document.getElementById('res-iva').innerText = '$' + iva.toLocaleString('es-MX', {minimumFractionDigits: 2});
+        document.getElementById('res-total').innerText = '$' + total.toLocaleString('es-MX', {minimumFractionDigits: 2});
+    }
+</script>
+</body>
+</html>
