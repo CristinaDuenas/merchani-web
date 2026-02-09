@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Tienda - Merchani</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --space-indigo: #1A2B4E;
+            --fresh-sky: #00A3E0;
+            --merchani-gradient: linear-gradient(135deg, #00F2FE 0%, #00A3E0 100%);
+            --platinum: #F0F2F5; 
+            --charcoal-blue: #333F48;
+            --cool-steel: #94A3B8;
+            --sidebar-width: 280px;
+        }
+
+        body { font-family: 'Inter', sans-serif; background-color: var(--platinum); margin: 0; display: flex; }
+
+        /* SIDEBAR & HEADER */
+        .sidebar { width: var(--sidebar-width); background: var(--space-indigo); height: 100vh; position: fixed; color: white; display: flex; flex-direction: column; z-index: 1000; }
+        .nav-menu { margin-top: 70px; }
+        .nav-item { padding: 16px 25px; cursor: pointer; display: flex; align-items: center; gap: 12px; color: #CBD5E1; text-decoration: none; border-radius: 30px 0 0 30px; margin-left: 15px; }
+        .nav-item.active { background: var(--platinum); color: var(--fresh-sky); font-weight: 600; }
+        .top-header { background: white; height: 70px; padding: 0 3rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.03); position: fixed; top: 0; right: 0; left: var(--sidebar-width); z-index: 900; }
+
+        .main-content { margin-left: var(--sidebar-width); flex-grow: 1; padding: 100px 3rem 3rem; }
+        .main-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
+
+        /* CARD PRINCIPAL */
+        .info-card { background: white; border-radius: 12px; padding: 2.5rem; border: 1px solid #E2E8F0; box-shadow: 0 4px 20px rgba(0,0,0,0.04); margin-bottom: 2rem; }
+        
+        .profile-header-layout { display: flex; gap: 2.5rem; align-items: flex-start; }
+        .avatar-section { position: relative; flex-shrink: 0; }
+        .avatar-circle { width: 130px; height: 130px; border-radius: 50%; background: var(--merchani-gradient); display: flex; align-items: center; justify-content: center; border: 4px solid white; box-shadow: 0 8px 20px rgba(0,163,224,0.2); }
+        .avatar-circle i { font-size: 3.5rem; color: white; }
+        .camera-btn { position: absolute; bottom: 5px; right: 5px; width: 34px; height: 34px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: var(--cool-steel); box-shadow: 0 2px 8px rgba(0,0,0,0.15); cursor: pointer; border: none; }
+
+        .info-details { flex-grow: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 3rem; }
+        .store-title { grid-column: span 2; font-family: 'Plus Jakarta Sans'; font-size: 1.6rem; color: var(--space-indigo); margin-bottom: 0.5rem; }
+        .info-item { display: flex; align-items: center; gap: 10px; color: var(--cool-steel); font-size: 0.85rem; margin-bottom: 4px; }
+        .info-item i { width: 20px; text-align: center; font-size: 1rem; }
+        .info-value { color: var(--charcoal-blue); font-weight: 500; }
+
+        /* LÍNEA DE ACENTO (Estilo Mis Datos) */
+        .card-divider-wrapper { margin-top: 1rem; margin-bottom: 2rem; }
+        .card-divider { height: 1px; background: #F1F5F9; position: relative; width: 100%; }
+        .card-divider::after { content: ""; position: absolute; left: 0; bottom: 0; width: 65px; height: 3px; background: var(--fresh-sky); }
+
+        /* FORMULARIO */
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+        .btn-save { background: var(--fresh-sky); color: white; border: none; padding: 10px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+        .edit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+        .input-group { display: flex; flex-direction: column; gap: 6px; }
+        .input-group label { font-size: 0.72rem; font-weight: 700; color: var(--cool-steel); text-transform: uppercase; }
+        .inline-field { border: 1px solid #E2E8F0; padding: 11px 14px; border-radius: 8px; font-size: 0.9rem; color: var(--space-indigo); background: #F8FAFC; transition: 0.3s; }
+
+        /* ESTATUS DE CONTRATACIÓN (Línea completa) */
+        .timeline-container { margin: 1rem 0; position: relative; padding: 0 10px; }
+        .timeline-line-bg { position: absolute; top: 12px; left: 10%; right: 10%; height: 2px; background: #E2E8F0; z-index: 1; }
+        .timeline-h { display: flex; justify-content: space-between; position: relative; z-index: 2; }
+        .t-step { display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 1; }
+        .t-dot { width: 24px; height: 24px; border-radius: 50%; background: white; border: 2px solid #E2E8F0; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: var(--cool-steel); }
+        .t-dot.active { border-color: var(--fresh-sky); background: var(--fresh-sky); color: white; }
+
+        /* MI SALDO (Letras blancas, fondo azul) */
+        .balance-card { background: var(--space-indigo); border-radius: 12px; padding: 2rem; color: white; }
+        .balance-title { font-family: 'Plus Jakarta Sans'; font-size: 1.4rem; font-weight: 700; margin-bottom: 1.2rem; display: block; }
+        .balance-amount { font-size: 2.2rem; font-weight: 700; margin-bottom: 1.5rem; }
+        .balance-row { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px; opacity: 0.9; }
+
+        /* TABLA SUBTIENDAS */
+        .table-section { grid-column: span 2; background: white; border-radius: 12px; border: 1px solid #E2E8F0; overflow: hidden; }
+        .table-toolbar { padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #F1F5F9; }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: #F8FAFC; padding: 12px 20px; text-align: left; font-size: 0.65rem; color: var(--cool-steel); text-transform: uppercase; }
+        td { padding: 12px 20px; font-size: 0.85rem; border-bottom: 1px solid #F1F5F9; }
+        .mini-logo { width: 35px; height: 35px; border-radius: 8px; background: var(--merchani-gradient); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.7rem; }
+        
+        /* MODAL */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; z-index: 2000; }
+        .modal { background: white; padding: 2rem; border-radius: 12px; text-align: center; max-width: 400px; width: 90%; }
+    </style>
+</head>
+<body>
+
+<aside class="sidebar">
+    <nav class="nav-menu">
+        <a href="#" class="nav-item"><i class="fa-solid fa-house"></i> Inicio</a>
+        <a href="#" class="nav-item"><i class="fa-solid fa-id-card"></i> Mis Datos Personales</a>
+        <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 15px 25px;"></div>
+        <a href="#" class="nav-item active"><i class="fa-solid fa-store"></i> Bazar Centro</a>
+    </nav>
+</aside>
+
+<main class="main-content">
+    <header class="top-header">
+        <img src="Logo merchani.png" height="30" alt="Merchani">
+        <div style="color: var(--cool-steel); font-size: 0.8rem; font-weight: 700;">GESTIÓN DE TIENDA</div>
+    </header>
+
+    <div class="main-grid">
+        <div class="info-card">
+            <div class="profile-header-layout">
+                <div class="avatar-section">
+                    <div class="avatar-circle"><i class="fa-solid fa-store"></i></div>
+                    <button class="camera-btn"><i class="fa-solid fa-camera"></i></button>
+                </div>
+
+                <div class="info-details">
+                    <h1 class="store-title">Bazar Centro</h1>
+                    
+                    <div class="info-column">
+                        <div class="info-item"><i class="fa-solid fa-file-invoice"></i><span class="info-value">#MER-BC-2026</span></div>
+                        <div class="info-item"><i class="fa-solid fa-cat"></i><span class="info-value">DUOM800101XYZ</span></div>
+                        <div class="info-item"><i class="fa-solid fa-envelope"></i><span class="info-value">ventas@bazarcentro.com</span></div>
+                        <div class="info-item"><i class="fa-solid fa-mobile-retro"></i><span class="info-value">32707444</span></div>
+                    </div>
+
+                    <div class="info-column">
+                        <div class="info-item"><i class="fa-solid fa-user-check"></i><span class="info-value">María Cristina Dueñas Ortiz</span></div>
+                        <div class="info-item"><i class="fa-solid fa-shop-lock"></i><span class="info-value">Venta de artesanías locales</span></div>
+                        <div class="info-item"><i class="fa-solid fa-location-arrow"></i><span class="info-value">Av. Residencial Chiluca 40, CDMX</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-divider-wrapper"><div class="card-divider"></div></div>
+
+            <div class="section-header">
+                <h3 style="margin: 0; font-family: 'Plus Jakarta Sans'; color: var(--space-indigo);">Actualizar Información</h3>
+                <button class="btn-save">Guardar Cambios</button>
+            </div>
+
+            <div class="edit-grid">
+                <div class="input-group"><label>Nombre de la Tienda</label><input type="text" class="inline-field" value="Bazar Centro"></div>
+                <div class="input-group"><label>Representante</label><input type="text" class="inline-field" value="María Cristina Dueñas Ortiz"></div>
+                <div class="input-group"><label>Correo Electrónico</label><input type="email" class="inline-field" value="ventas@bazarcentro.com"></div>
+                <div class="input-group"><label>RFC</label><input type="text" class="inline-field" value="DUOM800101XYZ"></div>
+                <div class="input-group"><label>Teléfono Celular</label><input type="tel" class="inline-field" value="32707444"></div>
+                <div class="input-group"><label>Giro Comercial</label><input type="text" class="inline-field" value="Artesanías locales"></div>
+                <div class="input-group" style="grid-column: span 3;"><label>Dirección Completa</label><input type="text" class="inline-field" value="Av. Residencial Chiluca 40, Atizapán de Zaragoza"></div>
+            </div>
+        </div>
+
+        <div class="right-col">
+            <div class="info-card" style="padding: 1.5rem;">
+                <label style="font-size: 0.7rem; font-weight: 700; color: var(--cool-steel); text-transform: uppercase; margin-bottom: 1.5rem; display: block; text-align: center;">Estatus de Contratación</label>
+                <div class="timeline-container">
+                    <div class="timeline-line-bg"></div>
+                    <div class="timeline-h">
+                        <div class="t-step"><div class="t-dot active"><i class="fa-solid fa-check"></i></div><span style="font-size: 0.55rem; font-weight: 700; margin-top: 5px;">CONTRATADO</span></div>
+                        <div class="t-step"><div class="t-dot active">2</div><span style="font-size: 0.55rem; font-weight: 700; margin-top: 5px;">CONFIG.</span></div>
+                        <div class="t-step"><div class="t-dot">3</div><span style="font-size: 0.55rem; font-weight: 700; margin-top: 5px;">REVISIÓN</span></div>
+                        <div class="t-step"><div class="t-dot">4</div><span style="font-size: 0.55rem; font-weight: 700; margin-top: 5px;">PUBLICADA</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="balance-card">
+                <span class="balance-title">Mi Saldo</span>
+                <div class="balance-amount">$12,450.00</div>
+                <div class="balance-row"><span>Fecha de Corte:</span><strong>01 Feb 2026</strong></div>
+                <div class="balance-row"><span>Fecha Límite:</span><strong>15 Feb 2026</strong></div>
+                <button class="btn-save" style="width: 100%; margin-top: 1.5rem;" onclick="document.getElementById('stripeModal').style.display='flex'">Proceder al Pago</button>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <div class="table-toolbar">
+                <h3 style="margin:0; font-family:'Plus Jakarta Sans';">Detalle de Subtiendas</h3>
+                <button class="btn-save" style="padding: 8px 16px; font-size: 0.8rem;"><i class="fa-solid fa-plus"></i> Agregar Subtienda</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Logo</th>
+                        <th>Tienda</th>
+                        <th>Responsable</th>
+                        <th>Correo</th>
+                        <th>Autonomía</th>
+                        <th>Estatus</th>
+                        <th>Pago</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><div class="mini-logo">JD</div></td>
+                        <td><strong>Joyería El Destello</strong></td>
+                        <td>Ana García</td>
+                        <td>ana@joyeria.com</td>
+                        <td><span style="font-weight: 600; color: var(--fresh-sky);">Independiente</span></td>
+                        <td><span class="pill" style="background:#DCFCE7; color:#166534; padding:4px 8px; border-radius:10px; font-size:0.6rem; font-weight:700;">ACTIVA</span></td>
+                        <td><span style="color:#166534; font-weight:700;">Pagada</span></td>
+                    </tr>
+                    <tr>
+                        <td><div class="mini-logo">CP</div></td>
+                        <td><strong>Café La Parroquia</strong></td>
+                        <td>Ricardo Slim</td>
+                        <td>ricardo@cafe.com</td>
+                        <td><span style="font-weight: 600; color: var(--cool-steel);">Agrupada</span></td>
+                        <td><span class="pill" style="background:#DCFCE7; color:#166534; padding:4px 8px; border-radius:10px; font-size:0.6rem; font-weight:700;">ACTIVA</span></td>
+                        <td><span style="color:#166534; font-weight:700;">Pagada</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<div class="modal-overlay" id="stripeModal">
+    <div class="modal">
+        <i class="fa-brands fa-stripe" style="font-size: 3rem; color: #635bff;"></i>
+        <h3>Redireccionando a Stripe</h3>
+        <p style="color: var(--cool-steel); font-size: 0.9rem;">Serás enviado de forma segura a nuestra pasarela de pagos.</p>
+        <button class="btn-save" style="width: 100%;" onclick="document.getElementById('stripeModal').style.display='none'">Aceptar</button>
+    </div>
+</div>
+
+</body>
+</html>
