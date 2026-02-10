@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Tienda - Merchani</title>
+    <title>Panel de Control - Merchani</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -28,57 +28,63 @@
         /* HEADER */
         .top-header { background: white; height: 70px; padding: 0 3rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.03); position: fixed; top: 0; right: 0; left: var(--sidebar-width); z-index: 900; }
 
-        .main-content { margin-left: var(--sidebar-width); flex-grow: 1; padding: 100px 3rem 3rem; }
+        .main-content { margin-left: var(--sidebar-width); flex-grow: 1; padding: 90px 3rem 3rem; }
         .main-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
 
+        /* BOTÓN ESTÁNDAR (Uniforme) */
+        .btn-action { background: var(--fresh-sky); color: white; border: none; padding: 10px 22px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s; }
+        .btn-action:hover { opacity: 0.9; }
+
         /* FICHA DE INFORMACIÓN */
-        .info-card { background: white; border-radius: 12px; padding: 2.5rem; border: 1px solid #E2E8F0; box-shadow: 0 4px 20px rgba(0,0,0,0.04); margin-bottom: 2rem; }
-        .profile-header-layout { display: flex; gap: 2.5rem; align-items: flex-start; margin-bottom: 1rem; }
+        .info-card { background: white; border-radius: 12px; padding: 1.5rem 2.5rem; border: 1px solid #E2E8F0; box-shadow: 0 4px 20px rgba(0,0,0,0.04); margin-bottom: 2rem; position: relative; }
+        .profile-header-layout { display: flex; gap: 2.5rem; align-items: center; }
         .avatar-section { position: relative; flex-shrink: 0; }
-        .avatar-circle { width: 130px; height: 130px; border-radius: 50%; background: var(--merchani-gradient); display: flex; align-items: center; justify-content: center; border: 4px solid white; box-shadow: 0 8px 20px rgba(0,163,224,0.2); }
-        .avatar-circle i { font-size: 3.5rem; color: white; }
-        .camera-btn { position: absolute; bottom: 5px; right: 5px; width: 34px; height: 34px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); border: none; color: var(--cool-steel); }
+        .avatar-circle { width: 110px; height: 110px; border-radius: 50%; background: var(--merchani-gradient); display: flex; align-items: center; justify-content: center; border: 4px solid white; box-shadow: 0 8px 20px rgba(0,163,224,0.2); }
+        .avatar-circle i { font-size: 3rem; color: white; }
+        .camera-btn { position: absolute; bottom: 5px; right: 5px; width: 30px; height: 30px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); border: none; color: var(--cool-steel); cursor: pointer; }
 
-        .info-details { flex-grow: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 0.2rem 2rem; }
-        .store-title { grid-column: span 2; font-family: 'Plus Jakarta Sans'; font-size: 1.8rem; color: var(--space-indigo); margin-bottom: 0.8rem; }
-        .info-item { display: flex; align-items: center; gap: 12px; color: var(--cool-steel); font-size: 0.9rem; margin-bottom: 4px; }
-        .info-item i { width: 18px; text-align: center; color: #94A3B8; font-size: 1.1rem; }
-        .info-value { color: var(--charcoal-blue); font-weight: 400; }
+        .info-details { flex-grow: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 0.1rem 2rem; }
+        .store-title { grid-column: span 2; font-family: 'Plus Jakarta Sans'; font-size: 1.6rem; color: var(--space-indigo); margin: 0 0 0.5rem 0; }
+        .info-item { display: flex; align-items: center; gap: 10px; color: var(--cool-steel); font-size: 0.85rem; margin-bottom: 4px; }
+        .info-item i { width: 16px; text-align: center; color: #94A3B8; }
+        .blue-divider { height: 3px; background: var(--fresh-sky); width: 60px; margin-top: 10px; border-radius: 2px; }
 
-        .blue-divider { height: 3px; background: var(--fresh-sky); width: 60px; margin-top: 15px; border-radius: 2px; }
+        /* TIENDAS DISPONIBLES */
+        .spaces-card { background: white; border-radius: 12px; padding: 1.5rem; border: 1px solid #E2E8F0; margin-bottom: 1.5rem; }
+        .spaces-label { font-size: 0.9rem; font-weight: 700; color: var(--space-indigo); margin-bottom: 1rem; display: block; }
+        .spaces-counter { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .progress-bar-bg { background: #F1F5F9; height: 8px; border-radius: 10px; margin-bottom: 1.5rem; overflow: hidden; }
+        .progress-bar-fill { background: var(--fresh-sky); width: 12%; height: 100%; }
 
-        .section-header { display: flex; justify-content: space-between; align-items: center; margin: 2rem 0 1.5rem; }
-        .edit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-        .input-group { display: flex; flex-direction: column; gap: 8px; }
-        .input-group label { font-size: 0.75rem; font-weight: 700; color: var(--cool-steel); text-transform: uppercase; }
-        .inline-field { border: 1px solid #E2E8F0; padding: 12px 15px; border-radius: 8px; font-size: 0.95rem; color: var(--space-indigo); background: #F8FAFC; outline: none; }
-        
-        .btn-save { background: var(--fresh-sky); color: white; border: none; padding: 10px 25px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.9rem; }
-
-        /* COLUMNA DERECHA */
+        /* ESTATUS */
         .timeline-box { background: white; border-radius: 12px; padding: 1.5rem; border: 1px solid #E2E8F0; margin-bottom: 1.5rem; }
-        .timeline-container { position: relative; margin-top: 1.5rem; padding: 0 10px; }
-        .line-gray { position: absolute; top: 12px; left: 0; right: 0; height: 2px; background: #E2E8F0; z-index: 1; }
+        .timeline-container { position: relative; margin-top: 1.2rem; }
+        .line-gray { position: absolute; top: 15px; left: 0; right: 0; height: 2px; background: #E2E8F0; z-index: 1; }
         .timeline-h { display: flex; justify-content: space-between; position: relative; z-index: 2; }
         .t-step { display: flex; flex-direction: column; align-items: center; flex: 1; }
-        .t-dot { width: 24px; height: 24px; border-radius: 50%; background: white; border: 2px solid #E2E8F0; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: var(--cool-steel); }
+        .t-dot { width: 30px; height: 30px; border-radius: 50%; background: white; border: 2px solid #E2E8F0; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--cool-steel); }
         .t-dot.active { border-color: var(--fresh-sky); background: var(--fresh-sky); color: white; }
+        .t-label { font-size: 0.5rem; font-weight: 700; margin-top: 5px; color: var(--cool-steel); text-transform: uppercase; }
 
         /* BALANCE CARD */
-        .balance-card { background: var(--space-indigo); border-radius: 12px; padding: 2rem; color: white; margin-top: 1.5rem; }
-        .balance-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.85rem; opacity: 0.9; }
+        .balance-card { background: var(--space-indigo); border-radius: 12px; padding: 2rem; color: white; }
+        .balance-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.8rem; opacity: 0.85; }
 
         /* TABLA */
-        .table-section { grid-column: span 2; background: white; border-radius: 12px; border: 1px solid #E2E8F0; overflow: hidden; }
+        .table-section { background: white; border-radius: 12px; border: 1px solid #E2E8F0; overflow: hidden; }
         .table-header { padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #F1F5F9; }
         table { width: 100%; border-collapse: collapse; }
-        th { background: #F8FAFC; padding: 12px 20px; text-align: left; font-size: 0.7rem; color: var(--cool-steel); text-transform: uppercase; }
-        td { padding: 12px 20px; font-size: 0.85rem; border-bottom: 1px solid #F1F5F9; }
+        th { background: #F8FAFC; padding: 12px 20px; text-align: left; font-size: 0.65rem; color: var(--cool-steel); text-transform: uppercase; }
+        td { padding: 12px 20px; font-size: 0.8rem; border-bottom: 1px solid #F1F5F9; }
+        .status-pill { padding: 3px 10px; border-radius: 15px; font-size: 0.65rem; font-weight: 700; }
 
-        /* MODAL */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 2000; }
-        .modal-content { background: white; border-radius: 12px; padding: 2.5rem; width: 100%; max-width: 800px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+        /* MODALES */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px; }
+        .modal-content { background: white; border-radius: 12px; padding: 2rem 2.5rem; width: 100%; max-width: 800px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); max-height: 90vh; overflow-y: auto; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1rem; }
+        .input-group { display: flex; flex-direction: column; gap: 6px; }
+        .input-group label { font-size: 0.65rem; font-weight: 700; color: var(--cool-steel); text-transform: uppercase; }
+        .inline-field { border: 1px solid #E2E8F0; padding: 10px 14px; border-radius: 8px; font-size: 0.85rem; background: #F8FAFC; outline: none; }
     </style>
 </head>
 <body>
@@ -98,43 +104,51 @@
     </header>
 
     <div class="main-grid">
-        <div class="info-card">
-            <div class="profile-header-layout">
-                <div class="avatar-section">
-                    <div class="avatar-circle"><i class="fa-solid fa-store"></i></div>
-                    <button class="camera-btn"><i class="fa-solid fa-camera"></i></button>
-                </div>
-                <div class="info-details">
-                    <h1 class="store-title">Bazar Centro</h1>
-                    <div class="info-column">
-                        <div class="info-item"><i class="fa-solid fa-file-invoice"></i> <span class="info-value">#MER-BC-2026</span></div>
-                        <div class="info-item"><i class="fa-solid fa-cat"></i> <span class="info-value">DUOM800101XYZ</span></div>
-                        <div class="info-item"><i class="fa-solid fa-envelope"></i> <span class="info-value">ventas@bazarcentro.com</span></div>
-                        <div class="info-item"><i class="fa-solid fa-mobile-screen-button"></i> <span class="info-value">32707444</span></div>
+        <div class="left-col">
+            <div class="info-card">
+                <button class="btn-action" style="position: absolute; top: 1.5rem; right: 2.5rem;" onclick="document.getElementById('editInfoModal').style.display='flex'">Actualizar Información</button>
+                <div class="profile-header-layout">
+                    <div class="avatar-section">
+                        <div class="avatar-circle"><i class="fa-solid fa-store"></i></div>
+                        <button class="camera-btn"><i class="fa-solid fa-camera"></i></button>
                     </div>
-                    <div class="info-column">
-                        <div class="info-item"><i class="fa-solid fa-user-check"></i> <span class="info-value">María Cristina Dueñas Ortiz</span></div>
-                        <div class="info-item"><i class="fa-solid fa-shop"></i> <span class="info-value">Venta de artesanías locales</span></div>
-                        <div class="info-item"><i class="fa-solid fa-location-arrow"></i> <span class="info-value">Av. Residencial Chiluca 40, CDMX</span></div>
+                    <div class="info-details">
+                        <h1 class="store-title">Bazar Centro</h1>
+                        <div class="info-column">
+                            <div class="info-item"><i class="fa-solid fa-file-invoice"></i> <span class="info-value">#MER-BC-2026</span></div>
+                            <div class="info-item"><i class="fa-solid fa-cat"></i> <span class="info-value">DUOM800101XYZ</span></div>
+                            <div class="info-item"><i class="fa-solid fa-envelope"></i> <span class="info-value">ventas@bazarcentro.com</span></div>
+                            <div class="info-item"><i class="fa-solid fa-mobile-screen-button"></i> <span class="info-value">32707444</span></div>
+                        </div>
+                        <div class="info-column">
+                            <div class="info-item"><i class="fa-solid fa-user-check"></i> <span class="info-value">María Cristina Dueñas Ortiz</span></div>
+                            <div class="info-item"><i class="fa-solid fa-shop"></i> <span class="info-value">Artesanías locales</span></div>
+                            <div class="info-item"><i class="fa-solid fa-location-arrow"></i> <span class="info-value">Residencial Chiluca 40, CDMX</span></div>
+                        </div>
                     </div>
                 </div>
+                <div class="blue-divider"></div>
             </div>
 
-            <div class="blue-divider"></div>
-
-            <div class="section-header">
-                <h3 style="margin:0; font-family:'Plus Jakarta Sans';">Actualizar Información</h3>
-                <button class="btn-save">Guardar Cambios</button>
-            </div>
-
-            <div class="edit-grid">
-                <div class="input-group"><label>Nombre de la Tienda</label><input type="text" class="inline-field" value="Bazar Centro"></div>
-                <div class="input-group"><label>Representante</label><input type="text" class="inline-field" value="María Cristina Dueñas Ortiz"></div>
-                <div class="input-group"><label>Correo Electrónico</label><input type="text" class="inline-field" value="ventas@bazarcentro.com"></div>
-                <div class="input-group"><label>RFC</label><input type="text" class="inline-field" value="DUOM800101XYZ"></div>
-                <div class="input-group"><label>Teléfono Celular</label><input type="text" class="inline-field" value="32707444"></div>
-                <div class="input-group"><label>Giro Comercial</label><input type="text" class="inline-field" value="Artesanías locales"></div>
-                <div class="input-group" style="grid-column: span 3;"><label>Dirección Completa</label><input type="text" class="inline-field" value="Av. Residencial Chiluca 40, Atizapán de Zaragoza"></div>
+            <div class="table-section">
+                <div class="table-header">
+                    <h3 style="margin:0; font-family:'Plus Jakarta Sans'; font-size:1.1rem;">Detalle de Subtiendas</h3>
+                    <button class="btn-action" onclick="document.getElementById('addSubModal').style.display='flex'"><i class="fa-solid fa-plus"></i> Agregar Subtienda</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr><th>Logo</th><th>Tienda</th><th>Responsable</th><th>Correo</th><th>Estado</th><th>Pago</th><th>Autonomía</th><th>Tipo</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><div style="width:28px; height:28px; background:var(--merchani-gradient); border-radius:6px;"></div></td>
+                            <td><strong>Joyería El Destello</strong></td>
+                            <td>Ana García</td><td>ana@joyeria.com</td>
+                            <td><span class="status-pill" style="background:#DCFCE7; color:#166534;">ACTIVA</span></td>
+                            <td>PAGADA</td><td>Independiente</td><td>Pública</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
@@ -144,99 +158,86 @@
                 <div class="timeline-container">
                     <div class="line-gray"></div>
                     <div class="timeline-h">
-                        <div class="t-step"><div class="t-dot active"><i class="fa-solid fa-check"></i></div><span style="font-size:0.55rem; font-weight:700; margin-top:5px;">CONTRATO</span></div>
-                        <div class="t-step"><div class="t-dot active">2</div><span style="font-size:0.55rem; font-weight:700; margin-top:5px;">CONFIG.</span></div>
-                        <div class="t-step"><div class="t-dot">3</div><span style="font-size:0.55rem; font-weight:700; margin-top:5px;">REVISIÓN</span></div>
-                        <div class="t-step"><div class="t-dot">4</div><span style="font-size:0.55rem; font-weight:700; margin-top:5px;">PUB.</span></div>
+                        <div class="t-step"><div class="t-dot active"><i class="fa-solid fa-check"></i></div><span class="t-label">Contrato</span></div>
+                        <div class="t-step"><div class="t-dot active"><i class="fa-solid fa-gear"></i></div><span class="t-label">Config.</span></div>
+                        <div class="t-step"><div class="t-dot"><i class="fa-solid fa-cloud-arrow-up"></i></div><span class="t-label">Revisión</span></div>
+                        <div class="t-step"><div class="t-dot"><i class="fa-solid fa-rocket"></i></div><span class="t-label">Publicada</span></div>
                     </div>
                 </div>
             </div>
 
-            <div class="timeline-box" style="margin-top:1.5rem;">
-                <label style="font-size:0.7rem; font-weight:700; color:var(--cool-steel); text-transform:uppercase;">Mis Tiendas Contratadas</label>
-                <div style="display:flex; justify-content:space-between; margin-top:1rem; font-size:0.9rem;">
-                    <span>Utilizadas: <strong>07</strong></span>
-                    <span>Disponibles: <strong style="color:var(--fresh-sky);">03</strong></span>
-                </div>
+            <div class="spaces-card">
+                <span class="spaces-label">Tiendas Disponibles</span>
+                <div class="spaces-counter">12 / 100</div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill"></div></div>
+                <button class="btn-action" style="width:100%; justify-content:center;">Contratar mas tiendas</button>
             </div>
 
             <div class="balance-card">
                 <h3 style="margin:0 0 1rem 0;">Mi Saldo</h3>
-                <div style="font-size:2.2rem; font-weight:700; margin-bottom:1.2rem;">$12,450.00</div>
-                
-                <div class="balance-row">
-                    <span>Fecha de corte:</span>
-                    <strong>01 de Feb 2026</strong>
-                </div>
-                <div class="balance-row">
-                    <span>Fecha límite:</span>
-                    <strong>15 de Feb 2026</strong>
-                </div>
-
-                <button class="btn-save" style="width:100%; margin: 10px 0;">Proceder al Pago</button>
-                <button style="width:100%; background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; padding:10px; border-radius:8px; cursor:pointer;">Ver historial de pagos</button>
+                <div style="font-size:2rem; font-weight:700; margin-bottom:1.2rem;">$12,450.00</div>
+                <div class="balance-row"><span>Fecha de Corte:</span><strong>01 Feb 2026</strong></div>
+                <div class="balance-row"><span>Fecha Límite:</span><strong>15 Feb 2026</strong></div>
+                <button class="btn-action" style="width:100%; justify-content:center; margin: 15px 0 10px;">Proceder al Pago</button>
+                <button style="width:100%; background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; padding:8px; border-radius:8px; cursor:pointer; font-size:0.75rem;">Ver historial de pagos</button>
             </div>
-        </div>
-
-        <div class="table-section">
-            <div class="table-header">
-                <h3 style="margin:0;">Detalle de Subtiendas</h3>
-                <button class="btn-save" onclick="document.getElementById('addModal').style.display='flex'"><i class="fa-solid fa-plus"></i> Agregar Subtienda</button>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Logo</th><th>Tienda</th><th>Responsable</th><th>Correo</th><th>Estado</th><th>Pago</th><th>Autonomía</th><th>Tipo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><div style="width:30px; height:30px; background:var(--merchani-gradient); border-radius:6px;"></div></td>
-                        <td><strong>Joyería El Destello</strong></td>
-                        <td>Ana García</td>
-                        <td>ana@joyeria.com</td>
-                        <td><span style="color:#22C55E; font-weight:700;">ACTIVA</span></td>
-                        <td>PAGADA</td>
-                        <td>Independiente</td>
-                        <td>Pública</td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </div>
 </main>
 
-<div class="modal-overlay" id="addModal">
+<div class="modal-overlay" id="editInfoModal">
+    <div class="modal-content">
+        <h2 style="font-family:'Plus Jakarta Sans'; margin-top:0;">Actualizar Información</h2>
+        <div class="form-row">
+            <div class="input-group"><label>Nombre de la Tienda</label><input type="text" class="inline-field" value="Bazar Centro"></div>
+            <div class="input-group"><label>Representante</label><input type="text" class="inline-field" value="María Cristina Dueñas Ortiz"></div>
+        </div>
+        <div class="form-row">
+            <div class="input-group"><label>Correo Electrónico</label><input type="email" class="inline-field" value="ventas@bazarcentro.com"></div>
+            <div class="input-group"><label>RFC</label><input type="text" class="inline-field" value="DUOM800101XYZ"></div>
+        </div>
+        <div class="form-row">
+            <div class="input-group"><label>Teléfono Celular</label><input type="tel" class="inline-field" value="32707444"></div>
+            <div class="input-group"><label>Giro Comercial</label><input type="text" class="inline-field" value="Artesanías locales"></div>
+        </div>
+        <div class="input-group" style="margin-bottom:1.5rem;">
+            <label>Dirección Completa</label><input type="text" class="inline-field" value="Av. Residencial Chiluca 40, CDMX">
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:1rem;">
+            <button style="background:none; border:none; color:var(--cool-steel); font-weight:600; cursor:pointer;" onclick="document.getElementById('editInfoModal').style.display='none'">Cancelar</button>
+            <button class="btn-action">Guardar Cambios</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="addSubModal">
     <div class="modal-content">
         <h2 style="font-family:'Plus Jakarta Sans'; margin-top:0;">Registrar Nueva Subtienda</h2>
-        <p style="color:var(--cool-steel); margin-bottom:2rem;">Completa la información para dar de alta una nueva unidad de negocio.</p>
+        <p style="color:var(--cool-steel); margin-bottom:1.2rem; font-size:0.85rem;">Ingresa los datos fiscales y comerciales de la nueva unidad.</p>
         
         <div class="form-row">
             <div class="input-group"><label>Nombre de la Tienda</label><input type="text" class="inline-field" placeholder="Ej. Café La Parroquia"></div>
-            <div class="input-group"><label>Nombre del Responsable</label><input type="text" class="inline-field" placeholder="Nombre completo"></div>
+            <div class="input-group"><label>Representante / Responsable</label><input type="text" class="inline-field" placeholder="Nombre completo"></div>
         </div>
         <div class="form-row">
-            <div class="input-group"><label>Correo Electrónico</label><input type="email" class="inline-field" placeholder="responsable@correo.com"></div>
-            <div class="input-group"><label>Teléfono de Contacto</label><input type="tel" class="inline-field" placeholder="Número a 10 dígitos"></div>
+            <div class="input-group"><label>Correo Electrónico</label><input type="email" class="inline-field" placeholder="correo@subtienda.com"></div>
+            <div class="input-group"><label>RFC</label><input type="text" class="inline-field" placeholder="RFC de la unidad"></div>
         </div>
         <div class="form-row">
-            <div class="input-group">
-                <label>Autonomía</label>
-                <select class="inline-field"><option>Independiente</option><option>Agrupada</option></select>
-            </div>
-            <div class="input-group">
-                <label>Tipo de Tienda</label>
-                <select class="inline-field"><option>Pública</option><option>Privada</option></select>
-            </div>
+            <div class="input-group"><label>Teléfono Celular</label><input type="tel" class="inline-field" placeholder="10 dígitos"></div>
+            <div class="input-group"><label>Giro Comercial</label><input type="text" class="inline-field" placeholder="Ej. Restaurante"></div>
         </div>
-        <div class="input-group" style="margin-bottom:2rem;">
-            <label>Descripción / Giro</label>
-            <input type="text" class="inline-field" placeholder="Breve descripción de a qué se dedican">
+        <div class="input-group" style="margin-bottom:1.2rem;">
+            <label>Dirección Completa</label><input type="text" class="inline-field" placeholder="Calle, número, colonia y CP">
+        </div>
+        <div class="form-row">
+            <div class="input-group"><label>Autonomía</label><select class="inline-field"><option>Independiente</option><option>Agrupada</option></select></div>
+            <div class="input-group"><label>Tipo de Tienda</label><select class="inline-field"><option>Pública</option><option>Privada</option></select></div>
         </div>
 
-        <div style="display:flex; justify-content:flex-end; gap:1rem;">
-            <button style="background:transparent; border:none; color:var(--cool-steel); cursor:pointer; font-weight:600;" onclick="document.getElementById('addModal').style.display='none'">Cancelar</button>
-            <button class="btn-save" style="padding: 12px 40px;">Crear Subtienda</button>
+        <div style="display:flex; justify-content:flex-end; gap:1rem; margin-top:1.5rem;">
+            <button style="background:none; border:none; color:var(--cool-steel); font-weight:600; cursor:pointer;" onclick="document.getElementById('addSubModal').style.display='none'">Cancelar</button>
+            <button class="btn-action">Crear Subtienda</button>
         </div>
     </div>
 </div>
