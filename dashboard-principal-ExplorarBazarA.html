@@ -36,31 +36,39 @@
 
         /* GRID DE BAZARES */
         .bazares-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-        .bazar-card { background: white; border-radius: 16px; border: 1px solid #E2E8F0; overflow: hidden; transition: 0.3s; }
+        .bazar-card { background: white; border-radius: 16px; border: 1px solid #E2E8F0; overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; }
         .bazar-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
         
         .bazar-img { height: 160px; background: #CBD5E1; position: relative; overflow: hidden; }
         .bazar-img img { width: 100%; height: 100%; object-fit: cover; }
         .bazar-tag { position: absolute; top: 15px; right: 15px; background: var(--fresh-sky); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.65rem; font-weight: 700; }
 
-        .bazar-info { padding: 1.5rem; }
+        .bazar-info { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
         .bazar-info h3 { margin: 0 0 10px 0; font-family: 'Plus Jakarta Sans'; color: var(--space-indigo); font-size: 1.1rem; }
         
         .bazar-meta { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.5rem; }
         .meta-item { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--cool-steel); }
         .meta-item i { color: var(--fresh-sky); width: 16px; }
 
-        .price-row { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #F1F5F9; padding-top: 1.2rem; }
+        .price-row { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #F1F5F9; padding-top: 1.2rem; margin-top: auto; }
         .rent-price { font-size: 1.1rem; font-weight: 700; color: var(--space-indigo); }
         .rent-price span { font-size: 0.7rem; color: var(--cool-steel); font-weight: 400; }
 
         .btn-view { background: var(--space-indigo); color: white; border: none; padding: 8px 16px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: 0.3s; }
         .btn-view:hover { background: var(--fresh-sky); }
+        .btn-hire { background: var(--fresh-sky); color: white; border: none; padding: 8px 16px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
 
         /* FILTROS LATERALES RÁPIDOS */
         .chips-container { display: flex; gap: 10px; margin-bottom: 1.5rem; flex-wrap: wrap; }
         .chip { padding: 6px 15px; background: white; border: 1px solid #E2E8F0; border-radius: 20px; font-size: 0.75rem; cursor: pointer; color: var(--cool-steel); font-weight: 500; }
         .chip.active { background: var(--space-indigo); color: white; border-color: var(--space-indigo); }
+
+        /* MODAL */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; justify-content: center; align-items: center; z-index: 2000; }
+        .modal-content { background: white; padding: 2rem; border-radius: 16px; width: 400px; position: relative; }
+        .modal-header { font-family: 'Plus Jakarta Sans'; color: var(--space-indigo); margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+        .store-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding: 8px; border-bottom: 1px solid #F1F5F9; }
+        .store-logo { width: 35px; height: 35px; border-radius: 50%; background: var(--platinum); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: var(--fresh-sky); }
     </style>
 </head>
 <body>
@@ -82,7 +90,7 @@
         <button class="btn-view" style="background:transparent; color: var(--space-indigo); border: 1px solid var(--space-indigo);"><i class="fa-solid fa-arrow-left"></i> Volver</button>
     </header>
 
-    <h1 style="font-family:'Plus Jakarta Sans'; color:var(--space-indigo); margin-bottom: 0.5rem;">Bazares Disponibles</h1>
+    <h1 style="font-family:'Plus Jakarta Sans'; color:var(--space-indigo); margin-bottom: 0.5rem;">Bazares con Apps Disponibles</h1>
     <p style="color: var(--cool-steel); margin-bottom: 2rem; font-size: 0.9rem;">Encuentra el lugar ideal para tu marca y solicita un espacio de venta.</p>
 
     <div class="search-container">
@@ -109,13 +117,31 @@
     <div class="chips-container">
         <div class="chip active">Todos</div>
         <div class="chip">Próximos Eventos</div>
-        <div class="chip">Espacios Fijos</div>
+        <div class="chip">Super Recomendados</div>
         <div class="chip">Pop-up Stores</div>
         <div class="chip">Bazares con App</div>
     </div>
 
     <div class="bazares-grid">
         
+        <div class="bazar-card">
+            <div class="bazar-img">
+                <div class="bazar-tag" style="background: var(--space-indigo);">OFICIAL</div>
+                <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=500&q=80" alt="Merchani Bazar">
+            </div>
+            <div class="bazar-info">
+                <h3>Merchani Bazar</h3>
+                <div class="bazar-meta">
+                    <div class="meta-item"><i class="fa-solid fa-star"></i> Ecosistema Digital Merchani</div>
+                    <div class="meta-item"><i class="fa-solid fa-globe"></i> Venta Global</div>
+                </div>
+                <div class="price-row">
+                    <div class="rent-price">$4,500 <span>/ anual</span></div>
+                    <button class="btn-hire">Contratar</button>
+                </div>
+            </div>
+        </div>
+
         <div class="bazar-card">
             <div class="bazar-img">
                 <div class="bazar-tag">Espacios Libres</div>
@@ -130,7 +156,7 @@
                 </div>
                 <div class="price-row">
                     <div class="rent-price">$2,500 <span>/ evento</span></div>
-                    <button class="btn-view">Ver Detalles</button>
+                    <button class="btn-view" onclick="openModal('Bazar Diseño Colectivo')">Ver Detalles</button>
                 </div>
             </div>
         </div>
@@ -149,7 +175,7 @@
                 </div>
                 <div class="price-row">
                     <div class="rent-price">$8,000 <span>/ mes</span></div>
-                    <button class="btn-view">Ver Detalles</button>
+                    <button class="btn-view" onclick="openModal('Plaza Artesanal Querétaro')">Ver Detalles</button>
                 </div>
             </div>
         </div>
@@ -168,13 +194,65 @@
                 </div>
                 <div class="price-row">
                     <div class="rent-price">$1,800 <span>/ fin de semana</span></div>
-                    <button class="btn-view">Ver Detalles</button>
+                    <button class="btn-view" onclick="openModal('Mercadito Gourmet')">Ver Detalles</button>
                 </div>
             </div>
         </div>
 
     </div>
 </main>
+
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">Tiendas en el Bazar</h3>
+            <i class="fa-solid fa-xmark" style="cursor:pointer" onclick="closeModal()"></i>
+        </div>
+        <div id="storeList">
+            </div>
+    </div>
+</div>
+
+<script>
+    const storesData = {
+        'Bazar Diseño Colectivo': [
+            {name: 'Luna Accesorios', logo: 'LA'},
+            {name: 'Eco Moda', logo: 'EM'},
+            {name: 'Artisan Pottery', logo: 'AP'}
+        ],
+        'Plaza Artesanal Querétaro': [
+            {name: 'Telares Real', logo: 'TR'},
+            {name: 'Cactus Shop', logo: 'CS'}
+        ],
+        'Mercadito Gourmet': [
+            {name: 'Delicias Orgánicas', logo: 'DO'},
+            {name: 'Chef House', logo: 'CH'},
+            {name: 'Vinos y Quesos', logo: 'VQ'}
+        ]
+    };
+
+    function openModal(bazarName) {
+        document.getElementById('modalTitle').innerText = bazarName;
+        const listContainer = document.getElementById('storeList');
+        listContainer.innerHTML = '';
+        
+        const stores = storesData[bazarName] || [];
+        stores.forEach(store => {
+            listContainer.innerHTML += `
+                <div class="store-item">
+                    <div class="store-logo">${store.logo}</div>
+                    <span style="font-weight:500; font-size:0.9rem;">${store.name}</span>
+                </div>
+            `;
+        });
+        
+        document.getElementById('modalOverlay').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('modalOverlay').style.display = 'none';
+    }
+</script>
 
 </body>
 </html>
