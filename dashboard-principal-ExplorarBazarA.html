@@ -50,13 +50,16 @@
         .meta-item { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--cool-steel); }
         .meta-item i { color: var(--fresh-sky); width: 16px; }
 
-        .price-row { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #F1F5F9; padding-top: 1.2rem; margin-top: auto; }
-        .rent-price { font-size: 1.1rem; font-weight: 700; color: var(--space-indigo); }
+        .price-row { border-top: 1px solid #F1F5F9; padding-top: 1.2rem; margin-top: auto; }
+        .rent-price { font-size: 1.1rem; font-weight: 700; color: var(--space-indigo); margin-bottom: 1rem; display: block; }
         .rent-price span { font-size: 0.7rem; color: var(--cool-steel); font-weight: 400; }
 
-        .btn-view { background: var(--space-indigo); color: white; border: none; padding: 8px 16px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: 0.3s; }
-        .btn-view:hover { background: var(--fresh-sky); }
-        .btn-hire { background: var(--fresh-sky); color: white; border: none; padding: 8px 16px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
+        /* BOTONES */
+        .card-actions { display: flex; gap: 10px; }
+        .btn-view { background: var(--space-indigo); color: white; border: none; padding: 8px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: 0.3s; flex: 1; text-align: center; }
+        .btn-hire { background: var(--fresh-sky); color: white; border: none; padding: 8px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: 0.3s; flex: 1; text-align: center; }
+        .btn-view:hover { background: #2a3f6d; }
+        .btn-hire:hover { background: #008fca; }
 
         /* FILTROS LATERALES RÁPIDOS */
         .chips-container { display: flex; gap: 10px; margin-bottom: 1.5rem; flex-wrap: wrap; }
@@ -87,39 +90,23 @@
 <main class="main-content">
     <header class="top-header">
         <img src="Logo merchani.png" height="30" alt="Merchani">
-        <button class="btn-view" style="background:transparent; color: var(--space-indigo); border: 1px solid var(--space-indigo);"><i class="fa-solid fa-arrow-left"></i> Volver</button>
+        <button class="btn-view" style="background:transparent; color: var(--space-indigo); border: 1px solid var(--space-indigo); flex:none;"><i class="fa-solid fa-arrow-left"></i> Volver</button>
     </header>
 
     <h1 style="font-family:'Plus Jakarta Sans'; color:var(--space-indigo); margin-bottom: 0.5rem;">Bazares con Apps Disponibles</h1>
     <p style="color: var(--cool-steel); margin-bottom: 2rem; font-size: 0.9rem;">Encuentra el lugar ideal para tu marca y solicita un espacio de venta.</p>
 
     <div class="search-container">
-        <div class="input-group">
-            <label>¿Qué buscas?</label>
-            <input type="text" class="search-input" placeholder="Nombre del bazar o palabra clave...">
-        </div>
-        <div class="input-group">
-            <label>Ubicación</label>
-            <input type="text" class="search-input" placeholder="Ciudad o zona...">
-        </div>
-        <div class="input-group">
-            <label>Categoría</label>
-            <select class="search-input">
-                <option>Todas las categorías</option>
-                <option>Moda y Diseño</option>
-                <option>Gastronomía</option>
-                <option>Artesanías</option>
-            </select>
-        </div>
-        <button class="btn-view" style="height: 45px; padding: 0 25px;"><i class="fa-solid fa-magnifying-glass"></i> Buscar</button>
+        <div class="input-group"><label>¿Qué buscas?</label><input type="text" class="search-input" placeholder="Nombre..."></div>
+        <div class="input-group"><label>Ubicación</label><input type="text" class="search-input" placeholder="Ciudad..."></div>
+        <div class="input-group"><label>Categoría</label><select class="search-input"><option>Todas</option><option>Moda</option><option>Gastronomía</option></select></div>
+        <button class="btn-view" style="height: 45px; padding: 0 25px; flex:none;"><i class="fa-solid fa-magnifying-glass"></i> Buscar</button>
     </div>
 
     <div class="chips-container">
         <div class="chip active">Todos</div>
         <div class="chip">Próximos Eventos</div>
         <div class="chip">Super Recomendados</div>
-        <div class="chip">Pop-up Stores</div>
-        <div class="chip">Bazares con App</div>
     </div>
 
     <div class="bazares-grid">
@@ -127,7 +114,7 @@
         <div class="bazar-card">
             <div class="bazar-img">
                 <div class="bazar-tag" style="background: var(--space-indigo);">OFICIAL</div>
-                <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=500&q=80" alt="Merchani Bazar">
+                <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=500&q=80">
             </div>
             <div class="bazar-info">
                 <h3>Merchani Bazar</h3>
@@ -136,8 +123,11 @@
                     <div class="meta-item"><i class="fa-solid fa-globe"></i> Venta Global</div>
                 </div>
                 <div class="price-row">
-                    <div class="rent-price">$4,500 <span>/ anual</span></div>
-                    <button class="btn-hire">Contratar</button>
+                    <span class="rent-price">$4,500 <span>/ anual</span></span>
+                    <div class="card-actions">
+                        <button class="btn-view" onclick="openModal('Merchani Bazar')">Detalles</button>
+                        <button class="btn-hire">Contratar</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -145,18 +135,20 @@
         <div class="bazar-card">
             <div class="bazar-img">
                 <div class="bazar-tag">Espacios Libres</div>
-                <img src="https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=500&q=80" alt="Bazar">
+                <img src="https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=500&q=80">
             </div>
             <div class="bazar-info">
                 <h3>Bazar Diseño Colectivo</h3>
                 <div class="bazar-meta">
-                    <div class="meta-item"><i class="fa-solid fa-location-dot"></i> Col. Roma Norte, CDMX</div>
-                    <div class="meta-item"><i class="fa-solid fa-calendar"></i> 24 - 25 de Marzo, 2026</div>
-                    <div class="meta-item"><i class="fa-solid fa-shop"></i> 12 subtiendas disponibles</div>
+                    <div class="meta-item"><i class="fa-solid fa-location-dot"></i> Roma Norte, CDMX</div>
+                    <div class="meta-item"><i class="fa-solid fa-shop"></i> 12 subtiendas</div>
                 </div>
                 <div class="price-row">
-                    <div class="rent-price">$2,500 <span>/ evento</span></div>
-                    <button class="btn-view" onclick="openModal('Bazar Diseño Colectivo')">Ver Detalles</button>
+                    <span class="rent-price">$2,500 <span>/ evento</span></span>
+                    <div class="card-actions">
+                        <button class="btn-view" onclick="openModal('Bazar Diseño Colectivo')">Detalles</button>
+                        <button class="btn-hire">Contratar</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -164,18 +156,20 @@
         <div class="bazar-card">
             <div class="bazar-img">
                 <div class="bazar-tag">Fijo</div>
-                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=500&q=80" alt="Bazar">
+                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=500&q=80">
             </div>
             <div class="bazar-info">
-                <h3>Plaza Artesanal Querétaro</h3>
+                <h3>Plaza Artesanal QRO</h3>
                 <div class="bazar-meta">
-                    <div class="meta-item"><i class="fa-solid fa-location-dot"></i> Centro Histórico, QRO</div>
-                    <div class="meta-item"><i class="fa-solid fa-clock"></i> Abierto lun-dom</div>
-                    <div class="meta-item"><i class="fa-solid fa-shop"></i> 5 locales disponibles</div>
+                    <div class="meta-item"><i class="fa-solid fa-location-dot"></i> Centro, QRO</div>
+                    <div class="meta-item"><i class="fa-solid fa-shop"></i> 5 locales libres</div>
                 </div>
                 <div class="price-row">
-                    <div class="rent-price">$8,000 <span>/ mes</span></div>
-                    <button class="btn-view" onclick="openModal('Plaza Artesanal Querétaro')">Ver Detalles</button>
+                    <span class="rent-price">$8,000 <span>/ mes</span></span>
+                    <div class="card-actions">
+                        <button class="btn-view" onclick="openModal('Plaza Artesanal QRO')">Detalles</button>
+                        <button class="btn-hire">Contratar</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -183,18 +177,20 @@
         <div class="bazar-card">
             <div class="bazar-img">
                 <div class="bazar-tag" style="background: #22C55E;">Súper Recomendado</div>
-                <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=500&q=80" alt="Bazar">
+                <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=500&q=80">
             </div>
             <div class="bazar-info">
                 <h3>Mercadito Gourmet</h3>
                 <div class="bazar-meta">
-                    <div class="meta-item"><i class="fa-solid fa-location-dot"></i> San Pedro Garza, MTY</div>
-                    <div class="meta-item"><i class="fa-solid fa-calendar"></i> Cada fin de semana</div>
-                    <div class="meta-item"><i class="fa-solid fa-shop"></i> 8 espacios de cocina</div>
+                    <div class="meta-item"><i class="fa-solid fa-location-dot"></i> San Pedro, MTY</div>
+                    <div class="meta-item"><i class="fa-solid fa-calendar"></i> Fin de semana</div>
                 </div>
                 <div class="price-row">
-                    <div class="rent-price">$1,800 <span>/ fin de semana</span></div>
-                    <button class="btn-view" onclick="openModal('Mercadito Gourmet')">Ver Detalles</button>
+                    <span class="rent-price">$1,800 <span>/ evento</span></span>
+                    <div class="card-actions">
+                        <button class="btn-view" onclick="openModal('Mercadito Gourmet')">Detalles</button>
+                        <button class="btn-hire">Contratar</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -205,53 +201,32 @@
 <div class="modal-overlay" id="modalOverlay">
     <div class="modal-content">
         <div class="modal-header">
-            <h3 id="modalTitle">Tiendas en el Bazar</h3>
+            <h3 id="modalTitle">Tiendas</h3>
             <i class="fa-solid fa-xmark" style="cursor:pointer" onclick="closeModal()"></i>
         </div>
-        <div id="storeList">
-            </div>
+        <div id="storeList"></div>
     </div>
 </div>
 
 <script>
     const storesData = {
-        'Bazar Diseño Colectivo': [
-            {name: 'Luna Accesorios', logo: 'LA'},
-            {name: 'Eco Moda', logo: 'EM'},
-            {name: 'Artisan Pottery', logo: 'AP'}
-        ],
-        'Plaza Artesanal Querétaro': [
-            {name: 'Telares Real', logo: 'TR'},
-            {name: 'Cactus Shop', logo: 'CS'}
-        ],
-        'Mercadito Gourmet': [
-            {name: 'Delicias Orgánicas', logo: 'DO'},
-            {name: 'Chef House', logo: 'CH'},
-            {name: 'Vinos y Quesos', logo: 'VQ'}
-        ]
+        'Merchani Bazar': [{name: 'Tienda Oficial A', logo: 'OA'}, {name: 'Premium Merch', logo: 'PM'}],
+        'Bazar Diseño Colectivo': [{name: 'Luna Accesorios', logo: 'LA'}, {name: 'Eco Moda', logo: 'EM'}],
+        'Plaza Artesanal QRO': [{name: 'Telares Real', logo: 'TR'}, {name: 'Cactus Shop', logo: 'CS'}],
+        'Mercadito Gourmet': [{name: 'Chef House', logo: 'CH'}, {name: 'Vinos y Quesos', logo: 'VQ'}]
     };
 
-    function openModal(bazarName) {
-        document.getElementById('modalTitle').innerText = bazarName;
-        const listContainer = document.getElementById('storeList');
-        listContainer.innerHTML = '';
-        
-        const stores = storesData[bazarName] || [];
-        stores.forEach(store => {
-            listContainer.innerHTML += `
-                <div class="store-item">
-                    <div class="store-logo">${store.logo}</div>
-                    <span style="font-weight:500; font-size:0.9rem;">${store.name}</span>
-                </div>
-            `;
+    function openModal(name) {
+        document.getElementById('modalTitle').innerText = name;
+        const list = document.getElementById('storeList');
+        list.innerHTML = '';
+        (storesData[name] || []).forEach(s => {
+            list.innerHTML += `<div class="store-item"><div class="store-logo">${s.logo}</div><span>${s.name}</span></div>`;
         });
-        
         document.getElementById('modalOverlay').style.display = 'flex';
     }
 
-    function closeModal() {
-        document.getElementById('modalOverlay').style.display = 'none';
-    }
+    function closeModal() { document.getElementById('modalOverlay').style.display = 'none'; }
 </script>
 
 </body>
