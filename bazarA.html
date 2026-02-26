@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bazar - Merchani | Soluciones de Comercio Independiente</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --space-indigo: #1A2B4E;
+            --fresh-sky: #00A3E0;
+            --full-blue: #2E5BFF;
+            --charcoal: #333F48;
+            --bright-snow: #FFFFFF;
+            --platinum: #F0F2F5;
+        }
+
+        * { box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; margin: 0; background-color: var(--bright-snow); color: var(--charcoal); line-height: 1.6; }
+
+        header { background: var(--bright-snow); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .logo-container img { height: 50px; }
+        nav ul { list-style: none; display: flex; gap: 30px; align-items: center; margin: 0; }
+        nav a { text-decoration: none; color: var(--space-indigo); font-weight: 600; }
+
+        /* HERO - SIN CAMBIOS */
+        .hero-product { padding: 6rem 5%; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 4rem; max-width: 1400px; margin: 0 auto; }
+        .hero-info h1 { font-family: 'Plus Jakarta Sans'; color: var(--space-indigo); font-size: 3rem; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero-info p { font-size: 1.2rem; margin-bottom: 2.5rem; color: var(--charcoal); }
+        .hero-image img { width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+        /* CARACTERÍSTICAS - SIN CAMBIOS */
+        .op-section { padding: 5rem 5%; background: var(--platinum); }
+        .section-header { text-align: center; max-width: 800px; margin: 0 auto 4rem; }
+        .section-header h2 { font-family: 'Plus Jakarta Sans'; color: var(--space-indigo); font-size: 2.2rem; }
+        .op-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+        .op-card { background: white; padding: 2.5rem; border-radius: 15px; border: 1px solid #e2e8f0; text-align: center; }
+        .op-card i { font-size: 2.2rem; color: var(--full-blue); margin-bottom: 1.2rem; }
+        .op-card h3 { font-size: 1.1rem; color: var(--space-indigo); margin-bottom: 0.8rem; }
+        .op-card p { font-size: 0.9rem; margin: 0; color: #555; }
+
+        /* ESTRATEGIA INDEPENDIENTE (3 BLOQUES CON IMAGEN) */
+        .mkt-block { padding: 6rem 5%; }
+        .mkt-row { display: flex; align-items: center; gap: 5rem; max-width: 1200px; margin: 0 auto 6rem; }
+        .mkt-row:nth-child(even) { flex-direction: row-reverse; }
+        .mkt-content { flex: 1; }
+        .mkt-image { flex: 1; }
+        .mkt-image img { width: 100%; border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .mkt-content h3 { font-family: 'Plus Jakarta Sans'; color: var(--space-indigo); font-size: 1.8rem; margin-bottom: 1rem; }
+
+        /* INVITACIÓN A CONTRATAR TIENDA (NUEVA REDACCIÓN) */
+        .hiring-section { padding: 5rem 5%; background: var(--space-indigo); color: white; text-align: center; }
+        .hiring-container { max-width: 900px; margin: 0 auto; }
+        .hiring-container h2 { font-family: 'Plus Jakarta Sans'; color: var(--fresh-sky); font-size: 2.5rem; margin-bottom: 1.5rem; }
+        .hiring-container p { font-size: 1.3rem; margin-bottom: 2.5rem; line-height: 1.4; }
+        .btn-join { background: var(--fresh-sky); color: white; padding: 1.2rem 3.5rem; text-decoration: none; border-radius: 10px; font-weight: 700; font-size: 1.1rem; display: inline-block; transition: 0.3s; }
+        .btn-join:hover { background: var(--full-blue); transform: scale(1.05); }
+
+        /* FAQ */
+        .faq-section { padding: 5rem 5%; background: var(--platinum); }
+        .faq-container { max-width: 900px; margin: 0 auto; }
+        .faq-item { background: white; margin-bottom: 1rem; border-radius: 10px; overflow: hidden; border: 1px solid #e2e8f0; }
+        .faq-question { padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; color: var(--space-indigo); }
+        .faq-answer { padding: 0 1.5rem 1.5rem; font-size: 0.95rem; color: #555; display: none; }
+        .faq-item.active .faq-answer { display: block; }
+
+        /* FOOTER */
+        .main-footer { background-color: var(--space-indigo); color: white; padding: 4rem 5% 2rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1400px; margin: 0 auto; }
+        .footer-column h4 { font-family: 'Plus Jakarta Sans'; color: var(--bright-snow); margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .footer-column ul { list-style: none; padding: 0; }
+        .footer-column ul li a { text-decoration: none; color: rgba(255,255,255,0.8); font-size: 0.85rem; }
+
+        @media (max-width: 900px) {
+            .hero-product, .mkt-row, .op-grid { grid-template-columns: 1fr; text-align: center; flex-direction: column !important; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-container"><a href="index.html"><img src="Logo nuevo.png" alt="Merchani Logo"></a></div>
+    <nav><ul><li><a href="index.html#productos">Productos</a></li><li><a href="index.html#clientes">Clientes</a></li><li><a href="#">Precios</a></li><li><i class="fa-solid fa-circle-user" style="color:var(--full-blue); font-size:1.3rem;"></i></li></ul></nav>
+</header>
+
+<section class="hero-product">
+    <div class="hero-info">
+        <h1>Bazar: Gestión Integral y Autonomía de Marca</h1>
+        <p>Un ecosistema comercial diseñado para la coexistencia de múltiples unidades de negocio. Cada tienda opera con independencia absoluta, manteniendo la propiedad de los datos y la gestión operativa.</p>
+        <a href="index.html#contacto" class="btn-join">Comenzar ahora</a>
+    </div>
+    <div class="hero-image"><img src="https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=1000" alt="Bazar Merchani"></div>
+</section>
+
+<section class="op-section">
+    <div class="section-header"><h2>Privacidad y Potencia Operativa</h2></div>
+    <div class="op-grid">
+        <div class="op-card"><i class="fa-solid fa-shield-check"></i><h3>Protección de Datos</h3><p>Cada tienda posee la titularidad exclusiva de su información. El historial de clientes y ventas es privado.</p></div>
+        <div class="op-card"><i class="fa-solid fa-store"></i><h3>Independencia de Marca</h3><p>Cada unidad de negocio conserva su identidad, catálogo y parámetros de gestión personalizados.</p></div>
+        <div class="op-card"><i class="fa-solid fa-mobile-screen"></i><h3>Funcionalidades Avanzadas</h3><p>Acceso a todas las herramientas: notificaciones push, gestión de pedidos y marketing directo.</p></div>
+        <div class="op-card"><i class="fa-solid fa-clock-rotate-left"></i><h3>Control de Inventario</h3><p>Actualización de existencias de forma instantánea. El inventario refleja la realidad de la tienda.</p></div>
+        <div class="op-card"><i class="fa-solid fa-chart-line-up"></i><h3>Estrategias Propias</h3><p>Capacidad para ejecutar campañas de marketing independientes y comunicación directa con los seguidores.</p></div>
+        <div class="op-card"><i class="fa-solid fa-microchip"></i><h3>Tecnología de Punta</h3><p>Infraestructura escalable que garantiza estabilidad ante flujos de tráfico crecientes.</p></div>
+    </div>
+</section>
+
+<section class="mkt-block">
+    <div class="section-header"><h2>Estrategia Independiente en un Entorno Global</h2></div>
+    
+    <div class="mkt-row">
+        <div class="mkt-content">
+            <h3>Notificaciones de tu propia Marca</h3>
+            <p>Comunícate con tus clientes específicos. Envía alertas de stock o promociones exclusivas de tu tienda que llegan directo a su celular.</p>
+        </div>
+        <div class="mkt-image"><img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=600" alt="Notificaciones"></div>
+    </div>
+
+    <div class="mkt-row">
+        <div class="mkt-content">
+            <h3>Organización por Categorías</h3>
+            <p>El Bazar permite que los clientes te encuentren fácilmente a través de filtros, pero tú decides cómo presentar y acomodar tus productos.</p>
+        </div>
+        <div class="mkt-image"><img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=600" alt="Categorías"></div>
+    </div>
+
+    <div class="mkt-row">
+        <div class="mkt-content">
+            <h3>Vende Siempre, Estés donde Estés</h3>
+            <p>Al igual que en la App individual, tienes control total desde tu móvil. Revisa tus pedidos y gestiona tu tiendita sin fronteras.</p>
+        </div>
+        <div class="mkt-image"><img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=600" alt="Gestión Móvil"></div>
+    </div>
+</section>
+
+<section class="hiring-section">
+    <div class="hiring-container">
+        <h2>¿Quieres empezar a vender hoy mismo?</h2>
+        <p>No pierdas más tiempo. Contrátanos ahora mismo y obtén tu propia tienda dentro del Bazar de Merchani. Es el momento de posicionar tu marca y llevar tus ventas al siguiente nivel con el respaldo de nuestra tecnología.</p>
+        <a href="index.html#contacto" class="btn-join">¡Comenzar ahora!</a>
+    </div>
+</section>
+
+<section class="faq-section">
+    <div class="faq-container">
+        <h2 style="text-align:center; font-family:'Plus Jakarta Sans'; color:var(--space-indigo); margin-bottom:3rem;">Preguntas Frecuentes</h2>
+        <div class="faq-item">
+            <div class="faq-question">¿Otras tiendas pueden ver mis datos de ventas? <i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-answer">No. Cada tienda opera como una entidad tecnológica estanca. La confidencialidad está garantizada.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">¿Tengo las mismas funciones que una App individual? <i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-answer">Sí. El Bazar integra toda la potencia de "Mi Aplicación Móvil" para cada unidad de negocio.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">¿Cómo se gestiona el tiempo de implementación? <i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-answer">Al integrarse en el Bazar de Merchani, la habilitación de la tienda es inmediata una vez configurado el catálogo.</div>
+        </div>
+    </div>
+</section>
+
+<footer class="main-footer">
+    <div class="footer-grid">
+        <div class="footer-column"><h4>Compañía</h4><ul><li><a href="#">About us</a></li><li><a href="#">Careers</a></li><li><a href="#">Terms & Conditions</a></li><li><a href="#">Privacy</a></li></ul></div>
+        <div class="footer-column"><h4>Merchani for</h4><ul><li><a href="#">Malls</a></li><li><a href="#">Enterprice</a></li><li><a href="#">Bazar</a></li><li><a href="#">Small Business</a></li><li><a href="#">Entrepreneur</a></li></ul></div>
+        <div class="footer-column"><h4>Resources</h4><ul><li><a href="#">Contact Us</a></li><li><a href="#">Academy</a></li><li><a href="#">Pricing</a></li><li><a href="#">Partner program</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 Merchani. Todos los derechos reservados.</p></div>
+</footer>
+
+<script>
+    document.querySelectorAll('.faq-question').forEach(item => {
+        item.addEventListener('click', () => {
+            const parent = item.parentElement;
+            parent.classList.toggle('active');
+        });
+    });
+</script>
+
+</body>
+</html>

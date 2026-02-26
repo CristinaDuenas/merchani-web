@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes Somos - Merchani | Transformación de Ventas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --space-indigo: #1A2B4E;
+            --fresh-sky: #00A3E0;
+            --full-blue: #2E5BFF;
+            --charcoal: #333F48;
+            --bright-snow: #FFFFFF;
+            --platinum: #F0F2F5;
+        }
+
+        * { box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; margin: 0; background-color: var(--bright-snow); color: var(--charcoal); line-height: 1.6; }
+
+        header { background: var(--bright-snow); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .logo-container img { height: 50px; }
+        nav ul { list-style: none; display: flex; gap: 30px; align-items: center; margin: 0; }
+        nav a { text-decoration: none; color: var(--space-indigo); font-weight: 600; }
+
+        .about-hero {
+            background: linear-gradient(rgba(26, 43, 78, 0.8), rgba(26, 43, 78, 0.8)), url('https://images.unsplash.com/photo-1522071823991-b9671f9d7f1f?w=1600');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 5%;
+            text-align: center;
+        }
+        .about-hero h1 { font-family: 'Plus Jakarta Sans'; font-size: 3.5rem; margin-bottom: 1rem; }
+        .about-hero p { font-size: 1.2rem; max-width: 800px; margin: 0 auto; opacity: 0.9; }
+
+        .story-section { padding: 6rem 5%; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+        .story-text h2 { font-family: 'Plus Jakarta Sans'; color: var(--space-indigo); font-size: 2.5rem; margin-bottom: 1.5rem; }
+        .story-image img { width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+        .values-section { padding: 5rem 5%; background-color: var(--platinum); }
+        .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .value-card { background: white; padding: 3rem; border-radius: 15px; text-align: center; border: 1px solid #e2e8f0; }
+        .value-card i { font-size: 3rem; color: var(--fresh-sky); margin-bottom: 1.5rem; }
+        .value-card h3 { font-family: 'Plus Jakarta Sans'; color: var(--space-indigo); margin-bottom: 1rem; }
+
+        .contact-cta { padding: 5rem 5%; text-align: center; background-color: var(--space-indigo); color: white; }
+        .btn-cta { background: var(--fresh-sky); color: white; padding: 1.2rem 3rem; text-decoration: none; border-radius: 10px; font-weight: 700; display: inline-block; margin-top: 2rem; transition: 0.3s; }
+
+        .main-footer { background-color: var(--space-indigo); color: white; padding: 4rem 5% 2rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1400px; margin: 0 auto; }
+        .footer-column h4 { font-family: 'Plus Jakarta Sans'; color: var(--bright-snow); margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .footer-column ul { list-style: none; padding: 0; }
+        .footer-column ul li a { text-decoration: none; color: rgba(255,255,255,0.8); font-size: 0.85rem; }
+
+        @media (max-width: 900px) {
+            .story-section, .values-grid, .footer-grid { grid-template-columns: 1fr; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-container"><a href="index.html"><img src="Logo nuevo.png" alt="Merchani Logo"></a></div>
+    <nav>
+        <ul>
+            <li><a href="index.html#productos">Productos</a></li>
+            <li><a href="index.html#clientes">Clientes</a></li>
+            <li><a href="pricing.html">Precios</a></li>
+            <li><i class="fa-solid fa-circle-user" style="color:var(--full-blue); font-size:1.3rem;"></i></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="about-hero">
+    <h1>Transformando las Ventas</h1>
+    <p>En Merchani, diseñamos el futuro de la operatividad empresarial a través de tecnología móvil escalable y robusta.</p>
+</section>
+
+<section class="story-section">
+    <div class="story-text">
+        <h2>Nuestra Historia</h2>
+        <p>Merchani nació con la visión de cerrar la brecha entre las ventas tradicionales y la era digital. Entendemos que la movilidad no es solo una opción, sino una necesidad para las empresas que buscan consolidarse en el mercado moderno.</p>
+        <p>Desde nuestras primeras soluciones para tiendas individuales hasta nuestras plataformas corporativas de gran escala, hemos mantenido un compromiso inquebrantable con la innovación y la eficiencia operativa.</p>
+    </div>
+    <div class="story-image">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800" alt="Equipo Merchani">
+    </div>
+</section>
+
+<section class="values-section">
+    <div class="values-grid">
+        <div class="value-card">
+            <i class="fa-solid fa-rocket"></i>
+            <h3>Misión</h3>
+            <p>Empoderar a empresas de todos los tamaños con aplicaciones móviles y herramientas digitales que simplifiquen sus ventas y potencien su crecimiento.</p>
+        </div>
+        <div class="value-card">
+            <i class="fa-solid fa-eye"></i>
+            <h3>Visión</h3>
+            <p>Ser la plataforma líder en aplicaciones móviles, reconocida por nuestra capacidad de transformar negocios en ecosistemas inteligentes.</p>
+        </div>
+        <div class="value-card">
+            <i class="fa-solid fa-heart"></i>
+            <h3>Valores</h3>
+            <p>Integridad, innovación constante y compromiso absoluto con el éxito de nuestros clientes. Trabajamos para ser el aliado estratégico que impulsa cada transacción y fortalece cada marca en el mercado digital.</p>
+        </div>
+    </div>
+</section>
+
+<section class="contact-cta">
+    <h2>¿Quieres ser parte del futuro con Merchani?</h2>
+    <p>Estamos listos para acompañar la transformación digital de tu organización.</p>
+    <a href="index.html#contacto" class="btn-cta">Contáctanos Hoy</a>
+</section>
+
+<footer class="main-footer">
+    <div class="footer-grid">
+        <div class="footer-column">
+            <h4>Compañía</h4>
+            <ul>
+                <li><a href="about-us.html">About us</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Privacy</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Merchani for</h4>
+            <ul>
+                <li><a href="plaza-comercial.html">Malls</a></li>
+                <li><a href="corporativo.html">Enterprice</a></li>
+                <li><a href="bazar.html">Bazar</a></li>
+                <li><a href="tienda-movil.html">Small Business</a></li>
+                <li><a href="#">Entrepreneur</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Resources</h4>
+            <ul>
+                <li><a href="index.html#contacto">Contact Us</a></li>
+                <li><a href="#">Academy</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="#">Partner program</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Merchani. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+</body>
+</html>
